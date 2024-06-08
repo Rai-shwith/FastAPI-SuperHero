@@ -48,7 +48,7 @@ class SendName(BaseModel):
 class UserInfo(BaseModel):
     email : EmailStr
     password : str
-    phone_number : str
+    phone_number : int
  
 
 

@@ -1,4 +1,4 @@
-from sqlalchemy import TIMESTAMP, Boolean, Column, Integer, String, text,ForeignKey
+from sqlalchemy import TIMESTAMP, Boolean, Column, Integer, String, UniqueConstraint, text,ForeignKey
 from sqlalchemy.orm import relationship
 from .database import Base
 
@@ -19,8 +19,11 @@ class Users(Base):
     password = Column(String,nullable=False)
     id = Column(Integer,nullable=False,primary_key=True)
     created_at = Column(TIMESTAMP(timezone=True),nullable=False,server_default=text('now()'))
-    phone_number: str = Column(String,unique=True)
-
+    phone_number: str = Column(Integer)
+    # Define a UniqueConstraint with a name
+    __table_args__ = (
+        UniqueConstraint('phone_number', name='uq_phone_number'),
+    )
 
 
 class Vote(Base):
