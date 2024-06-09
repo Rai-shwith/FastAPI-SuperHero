@@ -6,3 +6,4 @@ cockroachdb_testing.py
 app/draft_main.txt
 app/draft_main2.txt
 app/config.py
+control.py

@@ -1,10 +1,10 @@
 from typing import List
 from fastapi import Depends, status,HTTPException,APIRouter
-from psycopg2 import IntegrityError
 from ..database import get_db
 from sqlalchemy.orm import session
 from .. import schemas,models,utils
 from . import oauth2
+from sqlalchemy.exc import IntegrityError
 
 router = APIRouter(
     prefix="/users",
@@ -20,17 +20,36 @@ def  give_all_users(db:session=Depends(get_db)):
 @router.post("/",status_code=status.HTTP_201_CREATED,response_model=schemas.RespondToEntryOfUser)
 def create_user(user:schemas.UserInfo,db:session= Depends(get_db)):
     user.password = utils.hash(user.password)
+    # try:
+    #     new_user = models.Users(**user.model_dump())
+    #     db.add(new_user)
+    #     db.commit()
+    # except Exception as e:
+    #     # Check if the error message contains "already exists"
+    #     if '(psycopg2.errors.UniqueViolation)' in str(e):
+    #         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Email {user.email} already exists")
+    #     else:
+    #         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Database error occurred")
+        
     try:
         new_user = models.Users(**user.model_dump())
         db.add(new_user)
         db.commit()
-    except Exception as e:
-        # Check if the error message contains "already exists"
-        if '(psycopg2.errors.UniqueViolation)' in str(e):
-            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Email {user.email} already exists with id = ")
+    except IntegrityError as e:
+        print("iii",e)
+        # Check if the error message contains "already exists" for email or phone number
+        if 'duplicate key value violates unique constraint' in str(e).lower():
+            if "uq_phone_number" in str(e):
+                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Phone number {user.phone_number} already exists")
+            if 'users_email_key' in str(e).lower():
+                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Email {user.email} already exists")
+            else:
+                raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Unique constraint violation")
         else:
             raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Database error occurred")
-    
+    # except Exception as e:
+    #     print("eee",e)
+        
     db.refresh(new_user)
     return new_user
 
