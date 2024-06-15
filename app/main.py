@@ -1,14 +1,22 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,Request
 from .database import engine
 from . import models
 from .routers import post,user,auth,vote
 from .config import settings
-
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
 # models.Base.metadata.create_all(bind=engine)
 
-app=FastAPI()
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
+
+
+app = FastAPI()
+app.mount("/static",StaticFiles(directory=os.path.join(BASE_DIR,"templates/static")))
 
 # origins: list[str] = 
 app.add_middleware(
@@ -20,8 +28,8 @@ app.add_middleware(
 )
 
 @app.get("/")
-def root():
-    return {"message":"Welcome to Super Hero team"}
+def root(request : Request):
+    return templates.TemplateResponse("index.html",{"request":request,"message":"Welcome to my SuperHERO team!"})
 
 app.include_router(post.router)
 app.include_router(user.router)
