@@ -11,6 +11,8 @@ router = APIRouter(
     tags=["Authentication"]
 )
 
+router.mount("/")
+
 @router.post("/login",response_model=schemas.Token)
 def login(user_credentials : OAuth2PasswordRequestForm = Depends(),db: Session = Depends(get_db)):
 # def login(user_credentials : schemas.UserLogin,db: Session = Depends(get_db)):

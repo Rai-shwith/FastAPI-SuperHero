@@ -1,0 +1,82 @@
+body{
+    background-color:rgba(126, 166, 212, 0.78) ;
+}
+
+.herotxt{
+    color: white;
+    font-size: 48px;
+    position: fixed;
+    margin-top: -70px;
+    margin-left: 15px;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(82, 114, 152, 1);
+    height: 551px;
+    width: 906px;
+    color: white;
+    border-radius: 35px;
+
+}
+
+.upper-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:114px; 
+    flex-direction: column;
+    gap:106px ;
+}
+
+h1{
+    color: white;
+    font-size:96px ;
+}
+
+h3{
+    font-size: 32px;
+}
+
+.created-box{
+    font-size: 32px;
+    display: flex;    
+    margin-top: 55px;
+}
+.email-txt{
+    margin-left: 5px;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.more-info{
+    font-size:16px ;
+    width: 185px;
+    height: 63px;
+    border-radius: 35px;
+    background-color:rgba(152, 183, 220, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 157px;
+
+}
+
+a {
+    text-decoration: none; /* Remove default underline */
+    color: inherit; /* Inherit text color from parent */
+    position: relative; /* Needed for pseudo-elements */
+    display: inline-block; /* Allows background color to cover entire text */
+    transition: all 0.3s ease; /* Smooth transition for background color */
+  }
+
+  /* Hover state */
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: rgb(99, 99, 94); /* Highlight color hover */
+  }

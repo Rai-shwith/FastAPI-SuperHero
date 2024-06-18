@@ -1,0 +1,90 @@
+body{
+    background-color:rgba(126, 166, 212, 0.78) ;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-box{
+    background-color:rgba(82, 114, 152, 1) ;
+    width: 906px;
+    height: 758px;
+    border-radius: 35px;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 133px;
+
+}
+
+.main-txt{
+    font-size: 96px;
+    position: absolute;
+    top: 58.18px;
+}
+
+.hero-name{
+    font-size:48px ;
+    position: absolute;
+    left: 52px;
+    top: 191px;
+    /* transform: translate(0, -50%); */
+}
+
+.info-box{
+    top: 326px;
+    position: absolute;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 11px;
+    background-color:rgba(94, 133, 180, 0.74) ;
+    border-radius: 35px;
+    width: 562px;
+    height: 317px;
+
+}
+
+.info-txt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:  5px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.back-btn{
+    position: absolute;
+    width: 185px;
+    height: 63px;
+    background-color:rgba(152, 183, 220, 1) ;
+    border-radius: 35px;
+    bottom: -350px;
+    left:-400px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none; /* Remove default underline */
+    color: inherit; /* Inherit text color from parent */
+    position: relative; /* Needed for pseudo-elements */
+    display: inline-block; /* Allows background color to cover entire text */
+    transition: all 0.3s ease; /* Smooth transition for background color */
+  }
+
+  /* Hover state */
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: rgb(99, 99, 94); /* Highlight color hover */
+  }

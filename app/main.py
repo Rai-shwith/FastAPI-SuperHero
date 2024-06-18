@@ -16,6 +16,7 @@ templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
 
 app = FastAPI()
 app.mount("/static",StaticFiles(directory=os.path.join(BASE_DIR,"templates/static")))
+app.mount("/",StaticFiles(directory=os.path.join(BASE_DIR,"templates"),html=True),name="root")
 
 # origins: list[str] = 
 app.add_middleware(
@@ -26,9 +27,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
-def root(request : Request):
-    return templates.TemplateResponse("index.html",{"request":request,"message":"Welcome to my SuperHERO team!"})
+# @app.get("/")
+# def root(request : Request):
+#     return templates.TemplateResponse("index.html",{"request":request,"message":"Welcome to my SuperHERO team!"})
 
 app.include_router(post.router)
 app.include_router(user.router)
