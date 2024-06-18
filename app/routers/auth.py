@@ -1,5 +1,6 @@
 from fastapi import APIRouter,Depends,HTTPException,Response,status
 from fastapi.security.oauth2 import OAuth2PasswordRequestForm
+from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
 from .. import schemas,models,utils
 from ..database import get_db
@@ -11,9 +12,9 @@ router = APIRouter(
     tags=["Authentication"]
 )
 
-router.mount("/")
+router.mount("/login",StaticFiles(directory="app\\templates\login",html=True),name="login")
 
-@router.post("/login",response_model=schemas.Token)
+@router.post("/api/token",response_model=schemas.Token)
 def login(user_credentials : OAuth2PasswordRequestForm = Depends(),db: Session = Depends(get_db)):
 # def login(user_credentials : schemas.UserLogin,db: Session = Depends(get_db)):
 # in oauth2password  there are only 2 fields username and pass word so instesd  of .email now i use .username

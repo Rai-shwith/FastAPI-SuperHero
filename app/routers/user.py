@@ -1,5 +1,6 @@
 from typing import List
 from fastapi import Depends, status,HTTPException,APIRouter
+from fastapi.staticfiles import StaticFiles
 from ..database import get_db
 from sqlalchemy.orm import session
 from .. import schemas,models,utils
@@ -11,13 +12,15 @@ router = APIRouter(
     tags=["Users"]
 )
 
+router.mount("/signup",StaticFiles(directory="app\\templates\signup",html=True),name="signup")
+
 @router.get("/",response_model =List[schemas.RespondToEntryOfUser])
 def  give_all_users(db:session=Depends(get_db)):
     users = db.query(models.Users).all()
     return users
 
 # This block is used to create a new user in table users
-@router.post("/",status_code=status.HTTP_201_CREATED,response_model=schemas.RespondToEntryOfUser)
+@router.post("/api/token",status_code=status.HTTP_201_CREATED,response_model=schemas.RespondToEntryOfUser)
 def create_user(user:schemas.UserInfo,db:session= Depends(get_db)):
     user.password = utils.hash(user.password)
     # try:

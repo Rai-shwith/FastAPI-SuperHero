@@ -16,7 +16,8 @@ templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
 
 app = FastAPI()
 app.mount("/static",StaticFiles(directory=os.path.join(BASE_DIR,"templates/static")))
-app.mount("/",StaticFiles(directory=os.path.join(BASE_DIR,"templates"),html=True),name="root")
+# app.mount("/",StaticFiles(directory=os.path.join(BASE_DIR,"templates"),html=True),name="root")
+app.mount("/",StaticFiles(directory="app/templates",html=True),name="root")
 
 # origins: list[str] = 
 app.add_middleware(
