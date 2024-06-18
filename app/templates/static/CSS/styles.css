@@ -1,0 +1,95 @@
+body{
+    background-color: rgba(126, 166, 212, 0.78);
+    height: 100vh;
+    width: 100vw;
+}
+
+
+.welcometxt{
+    color: white;
+    font-size: 48px;
+    text-align: center;
+    margin-top: 232px;
+
+}
+
+.big-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 79px;
+    /* margin-top: 232px; */
+}
+
+.btns{
+    width: 516px;
+    height: 103px;
+    background-color: rgba(82, 114, 152, 1);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    /* margin: 79px 0; */
+    box-sizing: border-box;
+    border-radius: 35px;
+}
+
+.credential-input{
+    background-color: rgba(82, 114, 152, 1);
+    width: 626px;
+    height: 87px;
+    border-radius: 35px;
+    border: hidden;
+    font-size: 32px;
+    text-indent:90px ;
+}
+.credential-input::placeholder{
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 32px;
+    text-indent: 89px;
+}
+
+.loginbtn{
+    background-color: rgba(82, 114, 152, 1);
+    color: white;
+    height: 87px;
+    width: 297px;
+    border-radius: 35px;
+    font-size:32px ;
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+}
+
+.login_head{
+    color: white;
+    font-size: 96px;
+    margin-bottom: 95px;
+}
+
+a {
+    text-decoration: none; /* Remove default underline */
+    color: inherit; /* Inherit text color from parent */
+    position: relative; /* Needed for pseudo-elements */
+    display: inline-block; /* Allows background color to cover entire text */
+    transition: all 0.3s ease; /* Smooth transition for background color */
+  }
+
+  /* Hover state */
+  a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: rgb(99, 99, 94); /* Highlight color hover */
+  }
+  .sticky-back{
+    position: fixed;
+    top: 10;
+    left: 10;
+    z-index: 10;
+    padding: 10px;
+    /* border: solid grey 2px; */
+    /* border-radius: 20px; */
+    font-size: 30px;
+    color: white;
+  }
