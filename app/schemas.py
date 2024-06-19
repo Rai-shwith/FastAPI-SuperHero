@@ -6,7 +6,6 @@ from pydantic import BaseModel, EmailStr, conint
 class BasePost(BaseModel):
     name:str
     alias:str
-    is_alive:Optional[bool]=True
 
 class CreatePost(BasePost):
     pass 
