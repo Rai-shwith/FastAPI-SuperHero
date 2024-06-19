@@ -15,6 +15,7 @@ class Post(Base):
 
 class Users(Base):
     __tablename__ = "users"
+    user_name = Column(String,nullable=False)
     email = Column(String,nullable=False,unique=True)
     password = Column(String,nullable=False)
     id = Column(Integer,nullable=False,primary_key=True)
