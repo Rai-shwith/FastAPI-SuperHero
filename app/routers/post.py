@@ -35,7 +35,7 @@ def get_all( request: Request,db:session=Depends(get_db),limit:int =10,skip:int 
 
 
 @router.post("/",status_code=status.HTTP_201_CREATED,response_model=schemas.SendPost)
-def post_hero(post:schemas.CreatePost,db :session=Depends(get_db),current_user : int = Depends(oauth2.get_current_user)):
+def post_hero(request:Request,post:schemas.CreatePost,db :session=Depends(get_db),current_user : int = Depends(oauth2.get_current_user)):
     if current_user is None:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,detail="Please Log in to build a team")
     new_hero = models.Post(**post.model_dump())
@@ -44,7 +44,8 @@ def post_hero(post:schemas.CreatePost,db :session=Depends(get_db),current_user :
     db.commit()
     db.refresh(new_hero)
     # return {"message": f"{post.alias} is added to the Team "}
-    return new_hero
+    return templates.TemplateResponse("moreinfo/index.html",{"request": request,"hero_pack":{"Post":new_hero}})
+
     
 
 @router.get("/{id}",response_model=schemas.PostOut)
