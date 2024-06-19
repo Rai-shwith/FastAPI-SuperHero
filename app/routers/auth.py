@@ -5,14 +5,15 @@ from sqlalchemy.orm import Session
 from .. import schemas,models,utils
 from ..database import get_db
 from . import oauth2
-
+import os
 
 
 router = APIRouter(
     tags=["Authentication"]
 )
 
-router.mount("/login",StaticFiles(directory="app\\templates\login",html=True),name="login")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 
 @router.post("/api/token",response_model=schemas.Token)
 def login(user_credentials : OAuth2PasswordRequestForm = Depends(),db: Session = Depends(get_db)):

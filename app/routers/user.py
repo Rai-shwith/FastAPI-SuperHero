@@ -12,7 +12,7 @@ router = APIRouter(
     tags=["Users"]
 )
 
-router.mount("/signup",StaticFiles(directory="app\\templates\signup",html=True),name="signup")
+# router.mount("/signup",StaticFiles(directory="app\\templates\signup",html=True),name="signup")
 
 @router.get("/",response_model =List[schemas.RespondToEntryOfUser])
 def  give_all_users(db:session=Depends(get_db)):
