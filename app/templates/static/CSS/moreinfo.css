@@ -9,14 +9,14 @@ body{
 .main-box{
     background-color:rgba(82, 114, 152, 1) ;
     width: 906px;
-    height: 758px;
+    height: 700px;
     border-radius: 35px;    
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     position: relative;
-    top: 133px;
+    top: 50px;
 
 }
 
@@ -35,7 +35,7 @@ body{
 }
 
 .info-box{
-    top: 326px;
+    top: 280px;
     position: absolute;
     font-size: 32px;
     display: flex;
@@ -68,7 +68,7 @@ body{
     height: 63px;
     background-color:rgba(152, 183, 220, 1) ;
     border-radius: 35px;
-    bottom: -350px;
+    bottom: -320px;
     left:-400px ;
     display: flex;
     justify-content: center;

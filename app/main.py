@@ -22,6 +22,9 @@ app.mount("/static",StaticFiles(directory="app/templates/static"))
 
 app.mount("/signup",StaticFiles(directory="app\\templates\signup",html=True),name="signup")
 app.mount("/login",StaticFiles(directory="app\\templates\login",html=True),name="login")
+# app.mount("/hero",StaticFiles(directory="app\\templates\moreinfo",html=True),name="moreinfo")
+# app.mount("/hero",StaticFiles(directory=os.path.join("app","templates","moreinfo"),html=True),name="moreinfo")
+
 
 
 # app.mount("/",StaticFiles(directory=os.path.join(BASE_DIR,"templates"),html=True),name="root")

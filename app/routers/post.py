@@ -1,5 +1,6 @@
 from typing import List, Optional
 from fastapi import Depends, Request, status,HTTPException,APIRouter
+from fastapi.staticfiles import StaticFiles
 from sqlalchemy import func
 from ..database import get_db
 from sqlalchemy.orm import session
@@ -14,8 +15,7 @@ router = APIRouter(
 )
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-templates = Jinja2Templates(directory= "app/templates/home")
-
+templates = Jinja2Templates(directory= "app/templates/")
 
 # @router.get("/",response_model=List[schemas.SendPost])
 @router.get("/",response_model=List[schemas.PostOut])
@@ -25,7 +25,7 @@ def get_all( request: Request,db:session=Depends(get_db),limit:int =10,skip:int 
     results = db.query(models.Post,func.count(models.Vote.post_id).label("likes")).filter(models.Post.alias.contains(search)).join(models.Vote,models.Vote.post_id == models.Post.id,isouter=True).group_by(models.Post.id).limit(limit).offset(skip).all()
     # data = [{"post":{**post.__dict__}, "likes": int(value)} for post, value in results]
     # return results
-    return templates.TemplateResponse("index.html",{"request": request,"hero_pack":results})
+    return templates.TemplateResponse("home/index.html",{"request": request,"hero_pack":results})
     # return results
 
 
@@ -44,13 +44,15 @@ def post_hero(post:schemas.CreatePost,db :session=Depends(get_db),current_user :
     
 
 @router.get("/{id}",response_model=schemas.PostOut)
-def get_a_hero(id:int,db:session=Depends(get_db),current_user : int = Depends(oauth2.get_current_user)):
+# def get_a_hero(request : Request ,id:int,db:session=Depends(get_db),current_user : int = Depends(oauth2.get_current_user)):
+def get_a_hero(request : Request ,id:int,db:session=Depends(get_db)):
     # hero = db.query(models.Post).filter(models.Post.id == id).first()
     hero = db.query(models.Post,func.count(models.Vote.user_id).label("likes")).filter(models.Post.id == id).join(models.Vote,models.Vote.post_id == models.Post.id,isouter = True).group_by(models.Post.id).first()
     # hero = db.query(models.Post,func.count(models.Vote.post_id).label("likes")).filter(models.Post.alias.contains(search)).join(models.Vote,models.Vote.post_id == models.Post.id,isouter=True).group_by(models.Post.id).limit(limit).offset(skip).all()
 
     if hero:
-        return hero
+        return templates.TemplateResponse("moreinfo/index.html",{"request": request,"hero_pack":hero})
+
     else:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"No such Hero with {id = :}")
     
