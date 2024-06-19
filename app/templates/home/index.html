@@ -5,22 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Heros</title>
-    <link rel="stylesheet" href="static/CSS/home.css">
+    <link rel="stylesheet" href="../static/CSS/home.css">
 </head>
 
 <body>
     <div class="herotxt">Super Heros</div>
+
+
+    {% for hero in hero_pack %}
     <div class="upper-box">
         <div class="box">
-            <h1>Iron Man</h1>
-            <h3>Tony stark</h3>
+            <h1>{{hero["Post"]["alias"]}}</h1>
+            <h3>{{hero["Post"]["name"]}}</h3>
             <div class="created-box">
                 <div class="crtby">Created by : </div>
-                <div class="email-txt">ashwithrai@gmail.com</div>
+                <div class="email-txt">{{hero["Post"]["owner"]["email"]}}</div>
             </div>
             <a href ="moreInfo.html"><div class="more-info">More Info</div></a>
         </div>
     </div>
+    {% endfor %}
+
+
+
+
     <div class="upper-box">
         <div class="box">
             <h1>Iron Man</h1>

@@ -1,25 +1,32 @@
 from typing import List, Optional
-from fastapi import Depends, status,HTTPException,APIRouter
+from fastapi import Depends, Request, status,HTTPException,APIRouter
 from sqlalchemy import func
 from ..database import get_db
 from sqlalchemy.orm import session
 from .. import schemas,models
 from . import oauth2
-
+from fastapi.templating import Jinja2Templates
+import os
 
 router = APIRouter(
     prefix="/posts",
     tags=["Posts"]
 )
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+templates = Jinja2Templates(directory= "app/templates/home")
+
+
 # @router.get("/",response_model=List[schemas.SendPost])
 @router.get("/",response_model=List[schemas.PostOut])
 # @router.get("/")
-def get_all(db:session=Depends(get_db),limit:int =10,skip:int = 0,search : Optional[str]=""):
+def get_all( request: Request,db:session=Depends(get_db),limit:int =10,skip:int = 0,search : Optional[str]=""):
     # heros = db.query(models.Post).filter(models.Post.alias.contains(search)).limit(limit).offset(skip).all()
     results = db.query(models.Post,func.count(models.Vote.post_id).label("likes")).filter(models.Post.alias.contains(search)).join(models.Vote,models.Vote.post_id == models.Post.id,isouter=True).group_by(models.Post.id).limit(limit).offset(skip).all()
     # data = [{"post":{**post.__dict__}, "likes": int(value)} for post, value in results]
-    return results
+    # return results
+    return templates.TemplateResponse("index.html",{"request": request,"hero_pack":results})
+    # return results
 
 
 

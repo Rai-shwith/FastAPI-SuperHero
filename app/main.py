@@ -1,23 +1,29 @@
+import os
 from fastapi import FastAPI,Request
+from fastapi.templating import Jinja2Templates
 from .database import engine
 from . import models
 from .routers import post,user,auth,vote
 from .config import settings
-from fastapi.templating import Jinja2Templates
+# from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
 # models.Base.metadata.create_all(bind=engine)
 
-import os
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
+
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 
 app = FastAPI()
-app.mount("/static",StaticFiles(directory=os.path.join(BASE_DIR,"templates/static")))
+# app.mount("/static",StaticFiles(directory=os.path.join(BASE_DIR,"templates/static")))
+app.mount("/static",StaticFiles(directory="app/templates/static"))
 # app.mount("/",StaticFiles(directory=os.path.join(BASE_DIR,"templates"),html=True),name="root")
-app.mount("/",StaticFiles(directory="app/templates",html=True),name="root")
+# app.mount("/",StaticFiles(directory="app/templates",html=True),name="root")
+
+templates = Jinja2Templates(directory="app/templates")
+
 
 # origins: list[str] = 
 app.add_middleware(
@@ -28,9 +34,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# @app.get("/")
-# def root(request : Request):
-#     return templates.TemplateResponse("index.html",{"request":request,"message":"Welcome to my SuperHERO team!"})
+@app.get("/")
+def root(request : Request):
+    return templates.TemplateResponse("index.html",{"request":request})
+    return {"message":"hello world"}
 
 app.include_router(post.router)
 app.include_router(user.router)
