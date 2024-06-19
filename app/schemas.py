@@ -13,6 +13,7 @@ class CreatePost(BasePost):
 
 #  This is responce model for userenterd
 class RespondToEntryOfUser(BaseModel):
+    user_name : str
     email : EmailStr
     id : int
     created_at : datetime
@@ -46,6 +47,7 @@ class SendName(BaseModel):
 
 # This class is to validate user credentials while receiving
 class UserInfo(BaseModel):
+    user_name : str
     email : EmailStr
     password : str
     phone_number : int
