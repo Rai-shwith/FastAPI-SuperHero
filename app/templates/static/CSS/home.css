@@ -30,6 +30,7 @@ body{
     margin-top:114px; 
     flex-direction: column;
     gap:106px ;
+    margin-bottom: 144px;
 }
 
 h1{

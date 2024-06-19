@@ -11,7 +11,7 @@
 <body>
     <div class="herotxt">Super Heros</div>
 
-
+    {%if hero_pack%}
     {% for hero in hero_pack %}
     <div class="upper-box">
         <div class="box">
@@ -25,57 +25,15 @@
         </div>
     </div>
     {% endfor %}
+{% else %}
+<div class="upper-box">
+    <div class="box">
+        <h1>No Hero</h1>
+    </div>
+</div>
+{% endif %}
 
-
-
-
-    <div class="upper-box">
-        <div class="box">
-            <h1>Iron Man</h1>
-            <h3>Tony stark</h3>
-            <div class="created-box">
-                <div class="crtby">Created by : </div>
-                <div class="email-txt">ashwithrai@gmail.com</div>
-            </div>
-            <a href ="moreInfo.html"><div class="more-info">More Info</div></a>
-        </div>
-    </div>
-    <div class="upper-box">
-        <div class="box">
-            <h1>Iron Man</h1>
-            <h3>Tony stark</h3>
-            <div class="created-box">
-                <div class="crtby">Created by : </div>
-                <div class="email-txt">ashwithrai@gmail.com</div>
-            </div>
-            <a href ="moreInfo.html"><div class="more-info">More Info</div></a>
-        </div>
-    </div>
-    <div class="upper-box">
-        <div class="box">
-            <h1>Iron Man</h1>
-            <h3>Tony stark</h3>
-            <div class="created-box">
-                <div class="crtby">Created by : </div>
-                <div class="email-txt">ashwithrai@gmail.com</div>
-            </div>
-            <a href ="moreInfo.html"><div class="more-info">More Info</div></a>
-        </div>
-    </div>
-    <div class="upper-box">
-        <div class="box">
-            <h1>Iron Man</h1>
-            <h3>Tony stark</h3>
-            <div class="created-box">
-                <div class="crtby">Created by : </div>
-                <div class="email-txt">ashwithrai@gmail.com</div>
-            </div>
-            <a href ="moreInfo.html"><div class="more-info">More Info</div></a>
-        </div>
-    </div>
-    <div class="sticky-menu">
-        add fds
-    </div>
+   
 </body>
 
 </html>
