@@ -28,6 +28,10 @@ def get_all( request: Request,db:session=Depends(get_db),limit:int =10,skip:int 
     return templates.TemplateResponse("home/index.html",{"request": request,"hero_pack":results})
     # return results
 
+@router.get("/api",response_model=List[schemas.PostOut])
+def get_all( request: Request,db:session=Depends(get_db),limit:int =10,skip:int = 0,search : Optional[str]=""):
+    results = db.query(models.Post,func.count(models.Vote.post_id).label("likes")).filter(models.Post.alias.contains(search)).join(models.Vote,models.Vote.post_id == models.Post.id,isouter=True).group_by(models.Post.id).limit(limit).offset(skip).all()
+    return results
 
 
 @router.post("/",status_code=status.HTTP_201_CREATED,response_model=schemas.SendPost)
