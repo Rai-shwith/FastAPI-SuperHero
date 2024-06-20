@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="../static/CSS/styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
+    <style>
+        button {
+            border: none;
+            background-color: transparent;
+            /* Or specify your desired background color */
+            padding: 0;
+            outline: none;
+            /* Add other styles as needed */
+        }
+    </style>
 </head>
+
 <body>
     <div class="sticky-back"><a href="/">Back</a> </div>
     <form id="loginForm" class="big-container">
         <h1 class="login_head">Log in</h1>
         <input type="text" class="credential-input" id="loginEmail" placeholder="Email">
         <input type="password" class="credential-input" id="loginPassword" placeholder="Password">
-        <a href="/posts">
-        <div class="loginbtn" id="submitBtn" type="submit">Log in</div></a>
+        <button class="loginbtn" type="submit">Log in</button>
     </form>
     <script src="../static/JS/Login/script.js"></script>
 </body>
+
 </html>
