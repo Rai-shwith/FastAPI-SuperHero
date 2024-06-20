@@ -8,12 +8,13 @@
 </head>
 <body>
     <div class="sticky-back"><a href="/">Back</a> </div>
-    <div class="big-container">
+    <form id="loginForm" class="big-container">
         <h1 class="login_head">Log in</h1>
-        <input type="text" class="credential-input" placeholder="Email">
-        <input type="password" class="credential-input" placeholder="Password">
+        <input type="text" class="credential-input" id="loginEmail" placeholder="Email">
+        <input type="password" class="credential-input" id="loginPassword" placeholder="Password">
         <a href="/posts">
-        <div class="loginbtn" type="submit">Log in</div></a>
-    </div>
+        <div class="loginbtn" id="submitBtn" type="submit">Log in</div></a>
+    </form>
+    <script src="../static/JS/Login/script.js"></script>
 </body>
 </html>
