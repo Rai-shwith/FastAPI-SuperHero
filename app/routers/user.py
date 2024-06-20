@@ -6,6 +6,7 @@ from sqlalchemy.orm import session
 from .. import schemas,models,utils
 from . import oauth2
 from sqlalchemy.exc import IntegrityError
+from psycopg2.errors import UniqueViolation
 
 router = APIRouter(
     prefix="/users",
@@ -38,8 +39,7 @@ def create_user(user:schemas.UserInfo,db:session= Depends(get_db)):
         new_user = models.Users(**user.model_dump())
         db.add(new_user)
         db.commit()
-    except IntegrityError as e:
-        print("iii",e)
+    except (IntegrityError, UniqueViolation) as e:
         # Check if the error message contains "already exists" for email or phone number
         if 'duplicate key value violates unique constraint' in str(e).lower():
             # if "uq_phone_number" in str(e):
