@@ -49,8 +49,7 @@ class UserInfo(BaseModel):
     user_name : str
     email : EmailStr
     password : str
-    phone_number : int
- 
+
 
 
 class UserLogin(BaseModel):
