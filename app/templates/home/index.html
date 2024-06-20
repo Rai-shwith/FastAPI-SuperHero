@@ -21,19 +21,27 @@
                 <div class="crtby">Created by : </div>
                 <div class="email-txt">{{hero["Post"]["owner"]["user_name"]}}</div>
             </div>
-            <a href ="/posts/{{hero["Post"]["id"]}}"><div class="more-info">More Info</div></a>
+            <a href="/posts/{{hero["Post"]["id"]}}">
+                <div class="more-info">More Info</div>
+            </a>
         </div>
     </div>
     {% endfor %}
-{% else %}
-<div class="upper-box">
-    <div class="box">
-        <h1>No Hero</h1>
+    {% else %}
+    <div class="upper-box">
+        <div class="box">
+            <h1>No Hero</h1>
+        </div>
     </div>
-</div>
-{% endif %}
-
-   
+    {% endif %}
+    <nav>
+        <div class="navitems">
+            <a ><div class="item1">All Heros</div></a>
+            <a ><div class="item2">My Heros</div></a>
+            <a href="/addhero"><div class="item3">Add Hero</div></a>
+            <a ><div class="item4">Profile</div></a>
+        </div>
+    </nav>
 </body>
 
 </html>
