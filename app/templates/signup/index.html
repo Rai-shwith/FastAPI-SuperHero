@@ -6,18 +6,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
+    <style>
+        button {
+            border: none;
+            background-color: transparent;
+            /* Or specify your desired background color */
+            padding: 0;
+            outline: none;
+            /* Add other styles as needed */
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: none;
+            -webkit-text-fill-color: initial;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    </style>
 </head>
 
 <body>
     <div class="sticky-back"><a href="/">back</a> </div>
-    <div class="big-container">
+    <form id="signupForm" class="big-container">
         <h1 class="login_head">Sign up</h1>
-        <input type="text" class="credential-input" placeholder="User Name">
-        <input type="text" class="credential-input" placeholder="Email">
-        <input type="password" class="credential-input" placeholder="Password">
-        <a href="/posts">
-            <div class="loginbtn" type="submit">Sign up</div></a>
-    </div>
+        <input type="text" id="signupName" class="credential-input" placeholder="User Name">
+        <input type="text" id="signupEmail" class="credential-input" placeholder="Email">
+        <input type="password" id="signupPassword" class="credential-input" placeholder="Password">
+        <a>
+            <button class="loginbtn" type="submit">Sign up</div>
+        </a>
+    </form>
+    <script src="../static/JS/Signup/script.js"></script>
 </body>
 
 </html>
