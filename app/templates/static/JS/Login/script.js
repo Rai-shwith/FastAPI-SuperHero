@@ -2,10 +2,6 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
     event.preventDefault()
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
-    // const credentials = {
-    //     'username' : email,
-    //     'password' : password
-    // }
 
     const formData = new FormData();
     formData.append("username", email);
@@ -15,9 +11,16 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
         method: 'POST',
         body: formData
     })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(response.statusText);
+            }
+            return response.json();
+        })
         .then(data => {
-            localStorage.setItem('token', data.acess_token)
+            localStorage.setItem('token', data.acess_token);
+            localStorage.setItem('tokenType', data.token_type);
+            window.location.href = "/posts"
         }).catch(error => {
             console.error('Error while Logging in: ', error)
         })
