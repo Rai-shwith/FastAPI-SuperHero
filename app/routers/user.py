@@ -42,8 +42,8 @@ def create_user(user:schemas.UserInfo,db:session= Depends(get_db)):
         print("iii",e)
         # Check if the error message contains "already exists" for email or phone number
         if 'duplicate key value violates unique constraint' in str(e).lower():
-            if "uq_phone_number" in str(e):
-                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Phone number {user.phone_number} already exists")
+            # if "uq_phone_number" in str(e):
+            #     raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Phone number {user.phone_number} already exists")
             if 'users_email_key' in str(e).lower():
                 raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Email {user.email} already exists")
             else:
