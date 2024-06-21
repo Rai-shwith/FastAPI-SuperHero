@@ -83,6 +83,9 @@ a {
     color: rgb(99, 99, 94); /* Highlight color hover */
   }
   .sticky-back{
+    display: flex;
+    flex-direction: column;
+    gap:  15px;
     position: fixed;
     top: 10px;
     left: 10px;
