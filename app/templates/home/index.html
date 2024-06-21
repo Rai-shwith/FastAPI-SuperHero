@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../static/CSS/home.css">
 </head>
 
-<body>
     <div class="herotxt">Super Heros</div>
 
     {%if hero_pack%}
@@ -22,7 +21,7 @@
                 <div class="email-txt">{{hero["Post"]["owner"]["user_name"]}}</div>
             </div>
             <a href="/posts/{{hero["Post"]["id"]}}">
-                <div class="more-info">More Info</div>
+                <div class="more-info">joined_on</div>
             </a>
             
         </div>
@@ -48,13 +47,13 @@
             <a>
                 <div class="item1">All Heros</div>
             </a>
-            <a href="/addhero">
+            <a >
                 <div class="item2">My Heros</div>
             </a>
-            <a >
+            <a href="/addhero">
                 <div class="item3">Add Hero</div>
             </a>
-            <a>
+            <a href="/users">
                 <div class="item4">All Users</div>
             </a>
             <a>
@@ -63,5 +62,4 @@
         </div>
     </nav>
 </body>
-
 </html>

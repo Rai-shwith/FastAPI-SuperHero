@@ -1,6 +1,7 @@
 from typing import List
-from fastapi import Depends, status,HTTPException,APIRouter
+from fastapi import Depends, status,HTTPException,APIRouter,Request
 from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 from ..database import get_db
 from sqlalchemy.orm import session
 from .. import schemas,models,utils
@@ -13,12 +14,13 @@ router = APIRouter(
     tags=["Users"]
 )
 
+templates = Jinja2Templates(directory="app/templates/")
 # router.mount("/signup",StaticFiles(directory="app\\templates\signup",html=True),name="signup")
 
-@router.get("/",response_model =List[schemas.RespondToEntryOfUser])
-def  give_all_users(db:session=Depends(get_db)):
+@router.get("/", response_model =List[schemas.RespondToEntryOfUser])
+def  give_all_users(request: Request,db:session=Depends(get_db)):
     users = db.query(models.Users).all()
-    return users
+    return templates.TemplateResponse('getallusers/index.html',{"request":request,"users":users})
 
 # This block is used to create a new user in table users
 @router.post("/api/token",status_code=status.HTTP_201_CREATED,response_model=schemas.RespondToEntryOfUser)

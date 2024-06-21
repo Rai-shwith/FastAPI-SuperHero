@@ -33,24 +33,8 @@ nav{
     font-size: 32px;
 }
 
-.item1{
+.item4{
     background-color:rgba(149, 186, 228, 1) ;
-}
-
-.like-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* position: absolute; */
-}
-
-.like-svg{
-    width: 64px;
-    height: 64px;
-    position: absolute;
-    right: 100px;
-    bottom: 22px;
-    
 }
 
 
