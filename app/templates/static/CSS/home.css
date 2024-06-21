@@ -37,6 +37,23 @@ nav{
     background-color:rgba(149, 186, 228, 1) ;
 }
 
+.like-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute; */
+}
+
+.like-svg{
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    right: 100px;
+    bottom: 22px;
+    
+}
+
+
 .herotxt{
     font-size: 48px;
     position: fixed;
@@ -49,21 +66,25 @@ nav{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(82, 114, 152, 1);
-    height: 551px;
-    width: 906px;
-    border-radius: 35px;
+    margin-top: 58px;
+    box-sizing: border-box;
 
+    
 }
 
 .upper-box{
-    display: flex;
+    height: 551px;
+    width: 906px;
+    border-radius: 35px;
+    background-color: rgba(82, 114, 152, 1);
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     margin-top:114px; 
     flex-direction: column;
     gap:106px ;
     margin-bottom: 144px;
+    position: relative;
 }
 
 h1{
