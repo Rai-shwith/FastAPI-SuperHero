@@ -68,7 +68,7 @@ input:focus{
     top: 70px;
   }
 
-  .input-fld{
+  .inputForm{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,8 +85,15 @@ input:focus{
     align-items: center;
     width: 297px;
     height: 77px;
+    color: white;
     border-radius: 35px;
     background-color: rgba(152, 183, 220, 1);
+    transition: all 0.3s ease; /* Smooth transition for background color */
+
+  }
+
+  .btn:hover{
+    color:  rgb(99, 99, 94);
   }
   
   .back-btn{
@@ -102,20 +109,3 @@ input:focus{
     border-radius: 35px;
     background-color: rgba(152, 183, 220, 1);
   }
-
-  .test{
-    width: 100px;
-    height: 100px;
-    background-color: black;
-    position: absolute;
-    /* top: 0; */
-    bottom: 0;
-  }
-
-  /* .back-btn-container{
-    position: absolute;
-    bottom: 24px;                             
-    left:40px ;
-    background-color: red;
-    z-index: 50;
-  } */

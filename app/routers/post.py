@@ -20,7 +20,7 @@ templates = Jinja2Templates(directory= "app/templates/")
 # @router.get("/",response_model=List[schemas.SendPost])
 @router.get("/",response_model=List[schemas.PostOut])
 # @router.get("/")
-def get_all( request: Request,db:session=Depends(get_db),limit:int =10,skip:int = 0,search : Optional[str]=""):
+def get_all( request: Request,db:session=Depends(get_db),limit:int =10000,skip:int = 0,search : Optional[str]=""):
     # heros = db.query(models.Post).filter(models.Post.alias.contains(search)).limit(limit).offset(skip).all()
     results = db.query(models.Post,func.count(models.Vote.post_id).label("likes")).filter(models.Post.alias.contains(search)).join(models.Vote,models.Vote.post_id == models.Post.id,isouter=True).group_by(models.Post.id).limit(limit).offset(skip).all()
     # data = [{"post":{**post.__dict__}, "likes": int(value)} for post, value in results]
@@ -29,7 +29,7 @@ def get_all( request: Request,db:session=Depends(get_db),limit:int =10,skip:int 
     # return results
 
 @router.get("/api",response_model=List[schemas.PostOut])
-def get_all( request: Request,db:session=Depends(get_db),limit:int =10,skip:int = 0,search : Optional[str]=""):
+def get_all( request: Request,db:session=Depends(get_db),limit:int =10000,skip:int = 0,search : Optional[str]=""):
     results = db.query(models.Post,func.count(models.Vote.post_id).label("likes")).filter(models.Post.alias.contains(search)).join(models.Vote,models.Vote.post_id == models.Post.id,isouter=True).group_by(models.Post.id).limit(limit).offset(skip).all()
     return results
 
@@ -43,8 +43,10 @@ def post_hero(request:Request,post:schemas.CreatePost,db :session=Depends(get_db
     db.add(new_hero)
     db.commit()
     db.refresh(new_hero)
+    new_hero.id = str(new_hero.id)#this is because js cant handle large numbers
     # return {"message": f"{post.alias} is added to the Team "}
-    return templates.TemplateResponse("moreinfo/index.html",{"request": request,"hero_pack":{"Post":new_hero}})
+    # return templates.TemplateResponse("moreinfo/index.html",{"request": request,"hero_pack":{"Post":new_hero}})
+    return new_hero
 
     
 

@@ -18,7 +18,7 @@ class RespondToEntryOfUser(BaseModel):
     created_at : datetime
 
 class SendPost(BaseModel):
-    id : int
+    id : str
     name : str
     alias : str
     owner_id : int

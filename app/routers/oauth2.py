@@ -8,9 +8,6 @@ from ..config import settings
 
 oauth_schema = OAuth2PasswordBearer(tokenUrl='login')
 
-# SECRETE_KEY = "0u9of5u98e5ye935dd053r1h46s0dhd"
-# ALGORITHM = "HS256"
-# ACESS_TOKEN_EXPIRE_TIME = 60
 SECRETE_KEY = settings.secret_key
 ALGORITHM = settings.algorithm
 ACESS_TOKEN_EXPIRE_TIME = settings.acess_token_expire_time
@@ -18,7 +15,7 @@ ACESS_TOKEN_EXPIRE_TIME = settings.acess_token_expire_time
 
 def create_acess_tokens(data:dict):
     to_encode = data.copy()
-    expire = datetime.utcnow() + timedelta(minutes=ACESS_TOKEN_EXPIRE_TIME)
+    expire = datetime.utcnow() + timedelta(days=ACESS_TOKEN_EXPIRE_TIME)
     to_encode.update({"exp":expire})
     encoded_jwt = jwt.encode(to_encode,SECRETE_KEY,algorithm=ALGORITHM,)
     return encoded_jwt
