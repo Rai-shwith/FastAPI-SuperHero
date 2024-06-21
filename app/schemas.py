@@ -64,7 +64,7 @@ class TokenData(BaseModel):
     id : Optional[int] = None
 
 class ReturnUserId(BaseModel):
-    id : int
+    id : str
     
 class Vote(BaseModel):
     post_id : int 
