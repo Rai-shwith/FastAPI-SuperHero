@@ -63,10 +63,9 @@ def create_user(user:schemas.UserInfo,db:session= Depends(get_db)):
 @router.get("/id",response_model=schemas.ReturnUserId)
 def get_user_id(current_user = Depends(oauth2.get_current_user)):
     user = current_user
-    user = str(user.id) #js cannot handle long integers so iam converting it to int 
     if user is None :
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,detail="You are not logged in")
-    return user
+    return {"id": str(user.id)}
 
 @router.get("/{id}",response_model=schemas.RespondToEntryOfUser)
 def get_user(id : int , db : session = Depends(get_db)):

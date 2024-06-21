@@ -96,3 +96,5 @@ def update_hero(id:int,post:schemas.CreatePost,db : session = Depends(get_db),cu
 
     hero_query.update(post.model_dump(),synchronize_session = False)
     return hero_query.first()
+
+
