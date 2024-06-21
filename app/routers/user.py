@@ -20,7 +20,8 @@ templates = Jinja2Templates(directory="app/templates/")
 @router.get("/", response_model =List[schemas.RespondToEntryOfUser])
 def  give_all_users(request: Request,db:session=Depends(get_db)):
     users = db.query(models.Users).all()
-    return templates.TemplateResponse('getallusers/index.html',{"request":request,"users":users})
+    # return templates.TemplateResponse('getallusers/index.html',{"request":request,"users":users})
+    return users
 
 # This block is used to create a new user in table users
 @router.post("/api/token",status_code=status.HTTP_201_CREATED,response_model=schemas.RespondToEntryOfUser)
@@ -83,4 +84,9 @@ def remove_user(id : int,db:session = Depends(get_db),current_user : int = Depen
     db.commit()
 
     
+# This code is to give the heros for specific users
+@router.get("/posts/{id}",response_model=List[schemas.SendPost])
+def get_users_heros(request:Request,id:int,db :session = Depends(get_db)):
+    user_heros = db.query(models.Post).filter(models.Post.owner_id == id).all()
+    return user_heros
 
