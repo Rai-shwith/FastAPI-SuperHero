@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Heros</title>
-    <link rel="stylesheet" href="../static/CSS/home.css">
+    <link rel="stylesheet" href="../../static/CSS/getuserheros.css">
 </head>
-
-    <div class="herotxt">Super Heros</div>
+<div class="sticky-back"><a href="/users">Back</a> </div>
+    <!-- <div class="herotxt">Super Heros</div> -->
 
     {%if hero_pack%}
     {% for hero in hero_pack %}
@@ -44,8 +44,9 @@
     {% endif %}
     <nav>
         <div class="navitems">
-
+            <a href="/posts">
                 <div class="item1">All Heros</div>
+            </a>
             <a >
                 <div class="item2">My Heros</div>
             </a>

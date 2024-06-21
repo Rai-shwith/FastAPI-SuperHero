@@ -2,6 +2,7 @@ from typing import List
 from fastapi import Depends, status,HTTPException,APIRouter,Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from sqlalchemy import func
 from ..database import get_db
 from sqlalchemy.orm import session
 from .. import schemas,models,utils
@@ -20,8 +21,8 @@ templates = Jinja2Templates(directory="app/templates/")
 @router.get("/", response_model =List[schemas.RespondToEntryOfUser])
 def  give_all_users(request: Request,db:session=Depends(get_db)):
     users = db.query(models.Users).all()
-    # return templates.TemplateResponse('getallusers/index.html',{"request":request,"users":users})
-    return users
+    return templates.TemplateResponse('getallusers/index.html',{"request":request,"users":users})
+    # return users
 
 # This block is used to create a new user in table users
 @router.post("/api/token",status_code=status.HTTP_201_CREATED,response_model=schemas.RespondToEntryOfUser)
@@ -85,8 +86,8 @@ def remove_user(id : int,db:session = Depends(get_db),current_user : int = Depen
 
     
 # This code is to give the heros for specific users
-@router.get("/posts/{id}",response_model=List[schemas.SendPost])
+@router.get("/posts/{id}",response_model=List[schemas.PostOut])
 def get_users_heros(request:Request,id:int,db :session = Depends(get_db)):
-    user_heros = db.query(models.Post).filter(models.Post.owner_id == id).all()
-    return user_heros
+    user_heros = db.query(models.Post,func.count(models.Vote.post_id).label("likes")).filter(models.Post.owner_id == id).join(models.Vote,models.Vote.post_id == models.Post.id,isouter=True).group_by(models.Post.id).all()
+    return templates.TemplateResponse("getuserheros/index.html",{"request":request,"hero_pack": user_heros})
 

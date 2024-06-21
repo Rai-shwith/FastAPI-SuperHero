@@ -1,0 +1,145 @@
+body{
+    background-color:rgba(126, 166, 212, 0.78) ;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sticky-back{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    padding: 10px;
+    /* border: solid grey 2px; */
+    /* border-radius: 20px; */
+    font-size: 30px;
+    color: white;
+  }
+
+nav{
+    position: sticky;
+    bottom: 0;
+}
+
+.navitems{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 1387px;
+    height: 104px;
+    background-color: rgba(170, 204, 243, 1);
+    border-radius: 35px;
+    margin-bottom: 15px;
+}
+
+.navitems *{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 186px;
+    height: 57px;
+    background-color: rgba(82, 114, 152, 1);
+    border-radius: 15px;
+    font-size: 32px;
+}
+
+
+.like-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute; */
+}
+
+.like-svg{
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    right: 100px;
+    bottom: 22px;
+    
+}
+
+
+.herotxt{
+    font-size: 48px;
+    position: fixed;
+    top: 40px;
+    left: 15px;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 58px;
+    box-sizing: border-box;
+
+    
+}
+
+.upper-box{
+    height: 551px;
+    width: 906px;
+    border-radius: 35px;
+    background-color: rgba(82, 114, 152, 1);
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    margin-top:114px; 
+    flex-direction: column;
+    gap:106px ;
+    margin-bottom: 144px;
+    position: relative;
+}
+
+h1{
+    font-size:96px ;
+}
+
+h3{
+    font-size: 32px;
+}
+
+.created-box{
+    font-size: 32px;
+    display: flex;    
+    margin-top: 55px;
+}
+.email-txt{
+    margin-left: 5px;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.more-info{
+    font-size:16px ;
+    width: 185px;
+    height: 63px;
+    border-radius: 35px;
+    background-color:rgba(152, 183, 220, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 157px;
+
+}
+
+a {
+    text-decoration: none; /* Remove default underline */
+    color: inherit; /* Inherit text color from parent */
+    position: relative; /* Needed for pseudo-elements */
+    display: inline-block; /* Allows background color to cover entire text */
+    transition: all 0.3s ease; /* Smooth transition for background color */
+  }
+
+  /* Hover state */
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: rgb(99, 99, 94); /* Highlight color hover */
+  }

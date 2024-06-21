@@ -14,7 +14,7 @@ router = APIRouter(
     tags=["Posts"]
 )
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 templates = Jinja2Templates(directory= "app/templates/")
 
 # @router.get("/",response_model=List[schemas.SendPost])
