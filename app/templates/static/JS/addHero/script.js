@@ -6,8 +6,7 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
         "name": name,
         "alias": alias
     }
-    console.log(localStorage.getItem('token'));
-    fetch('/posts/', {
+        fetch('/posts/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -29,7 +28,7 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
 
         }
     }).then(data => {
-        if (!data == undefined)
+        if (!(data == undefined))
         window.location.href = `/posts/${data.id}`;
     })
 })
