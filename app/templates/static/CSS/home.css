@@ -38,22 +38,27 @@ nav{
     background-color:rgba(149, 186, 228, 1) ;
 }
 
-.like-box {
+#like-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* position: absolute; */
 }
 
-.like-svg{
+#like{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 64px;
     height: 64px;
     position: absolute;
     right: 100px;
     bottom: 22px;
+    cursor: pointer;
     
 }
-
+#like:active{
+    transform: scale(1.2);
+}
 
 .herotxt{
     font-size: 48px;
