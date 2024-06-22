@@ -52,7 +52,14 @@ nav{
     position: fixed;
     top: 40px;
     right: 15px;
-    background:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 186px;
+    height: 57px;
+    background-color: rgb(168, 203, 241);
+    border-radius: 15px;
+    font-size: 32px;
     color: white;
     font-family: inherit;
 }
