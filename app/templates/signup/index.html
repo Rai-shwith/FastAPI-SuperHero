@@ -28,19 +28,23 @@
 </head>
 
 <body>
-    <div class="sticky-back">
-        <a href="/">Back</a> 
-        <a href="/login">Login</a> 
+    <div style="display: none;" id="center">Invalid Email</div>
+    <div id="page-body">
+        <div class="sticky-back">
+            <a href="/">Back</a>
+            <a href="/login">Login</a>
+        </div>
+        <form id="signupForm" class="big-container">
+            <h1 class="login_head">Sign up</h1>
+            <input type="text" id="signupName" class="credential-input" placeholder="User Name">
+            <input type="text" id="signupEmail" class="credential-input" placeholder="Email">
+            <input type="password" id="signupPassword" class="credential-input" placeholder="Password">
+            <a>
+                <button class="loginbtn" type="submit">Sign up
+                </button>
+            </a>
+        </form>
     </div>
-    <form id="signupForm" class="big-container">
-        <h1 class="login_head">Sign up</h1>
-        <input type="text" id="signupName" class="credential-input" placeholder="User Name">
-        <input type="text" id="signupEmail" class="credential-input" placeholder="Email">
-        <input type="password" id="signupPassword" class="credential-input" placeholder="Password">
-        <a>
-            <button class="loginbtn" type="submit">Sign up</div>
-        </a>
-    </form>
     <script src="../static/JS/Signup/script.js"></script>
 </body>
 

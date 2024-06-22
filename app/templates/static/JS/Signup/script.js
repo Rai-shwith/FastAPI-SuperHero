@@ -1,6 +1,4 @@
-console.log("hello, jfaoif")
 document.getElementById('signupForm').addEventListener('submit', function (event) {
-    console.log("hello, jfaoif")
     event.preventDefault()
     const name = document.getElementById('signupName').value;
     const email = document.getElementById('signupEmail').value;
@@ -18,6 +16,34 @@ document.getElementById('signupForm').addEventListener('submit', function (event
         body: JSON.stringify(credentials)
     }).then(response => {
         if (!response.ok) {
+            if (response.status== 422){
+                console.error(response.statusText)
+                const message = document.getElementById('center');
+                message.style.display='block';
+                document.getElementById('page-body').classList.add('body-opacity');
+                setTimeout(() => {
+
+                        message.style.display='none';
+                        document.getElementById('page-body').classList.remove('body-opacity');
+                        
+                }, 1500);
+                
+            }
+            else if (response.status== 409){
+                console.error(response.statusText)
+                const message = document.getElementById('center');
+                message.innerHTML='Email Already Exist'
+                message.style.display='block';
+                document.getElementById('page-body').classList.add('body-opacity');
+                setTimeout(() => {
+
+                        message.style.display='none';
+                        message.innerHTML='Invalid Email'
+                        document.getElementById('page-body').classList.remove('body-opacity');
+                        
+                }, 1500);
+                
+            }
             throw new Error("Error while sending info: ",response.statusText)
         }
         return response.json()
