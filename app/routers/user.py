@@ -68,13 +68,16 @@ def get_user_id(current_user = Depends(oauth2.get_current_user)):
     return {"id": str(user.id)}
 
 @router.get("/{id}",response_model=schemas.RespondToEntryOfUser)
-def get_user(id : int , db : session = Depends(get_db)):
+def get_user(request:Request,id : int , db : session = Depends(get_db)):
     user_query = db.query(models.Users).filter(models.Users.id == id)
     user = user_query.first()
     db.commit()
     if user is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"No user with {id = :}")
-    return user
+    # return user
+    return templates.TemplateResponse('profile/index.html',{"request":request,"user":user})
+
+    
 
 @router.delete("/{id}",status_code=status.HTTP_204_NO_CONTENT)
 def remove_user(id : int,db:session = Depends(get_db),current_user : int = Depends(oauth2.get_current_user)):
