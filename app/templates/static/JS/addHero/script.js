@@ -6,7 +6,7 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
         "name": name,
         "alias": alias
     }
-        fetch('/posts/', {
+    fetch('/posts/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -17,30 +17,50 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
     ).then(response => {
         if (!response.ok) {
             console.error(response.statusText)
-            if (response.status == 401){
+            if (response.status == 401) {
                 console.error(response.statusText)
                 const message = document.getElementById('center');
-                message.style.display='block';
+                message.style.display = 'block';
                 document.getElementById('page-body').classList.add('body-opacity');
                 setTimeout(() => {
-                    window.location.href="/login"
+                    window.location.href = "/login"
                     setTimeout(() => {
-                        message.style.display='none';
+                        message.style.display = 'none';
                         document.getElementById('page-body').classList.remove('body-opacity');
-                        
+
                     }, 50);
                 }, 1500);
-                
+
 
             }
             throw new Error(response.statusText);
         }
-        else{
+        else {
             return response.json()
 
         }
     }).then(data => {
-        if (!(data == undefined))
-        window.location.href = `/posts/${data.id}`;
+        if (!(data == undefined)) {
+
+            const message = document.getElementById('center');
+            message.innerHTML = `${data.alias} is Succesfully Added`
+            message.style.color = 'green'
+            message.style.display = 'block';
+            document.getElementById('page-body').classList.add('body-opacity');
+            setTimeout(() => {
+
+                window.location.href = `/posts/${data.id}`;
+                setTimeout(() => {
+                    message.style.display = 'none';
+                    message.innerHTML = ''
+                    document.getElementById('page-body').classList.remove('body-opacity');
+                }, 50);
+
+
+            }, 1500);
+
+
+
+        }
     })
 })
