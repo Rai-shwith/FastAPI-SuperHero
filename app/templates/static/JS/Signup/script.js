@@ -60,9 +60,27 @@ document.getElementById('signupForm').addEventListener('submit', function (event
             }
             return response.json()
         }).then(data =>{
-            localStorage.setItem('token',data.acess_token);
-            localStorage.setItem('tokenType',data.token_type);
-            window.location.href = '/posts';
+            localStorage.setItem('token', data.acess_token);
+                localStorage.setItem('tokenType', data.token_type);
+                const message = document.getElementById('center');
+                message.innerHTML='Successfully Signed up'
+                message.style.color='green'
+                message.style.display='block';
+                document.getElementById('page-body').classList.add('body-opacity');
+                setTimeout(() => {
+                    window.location.href = "/posts"
+                    setTimeout(() => {
+                            document.getElementById('signupName').value=''
+                            document.getElementById('signupEmail').value=''
+                            document.getElementById('signupPassword').value=''          
+                            message.style.display='none';
+                        message.innerHTML='Invalid Email'
+                        document.getElementById('page-body').classList.remove('body-opacity');
+                        }, 1000);
+                        
+                        
+                }, 1500);
+                
         })
     })
 })
