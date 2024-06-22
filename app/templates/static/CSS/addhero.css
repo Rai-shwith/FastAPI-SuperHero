@@ -31,7 +31,8 @@ a {
     color: inherit; /* Inherit text color from parent */
     display: inline-block; /* Allows background color to cover entire text */
     transition: all 0.3s ease; /* Smooth transition for background color */
-  }
+    cursor: pointer;
+
 
   /* Hover state */
 a:hover {
