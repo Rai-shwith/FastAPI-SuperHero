@@ -3,7 +3,7 @@
     margin: 0;
 }
 
-body{
+#page-body{
     background-color: rgba(126, 166, 212, 0.78);
     color: white;
     display: flex;
@@ -109,4 +109,27 @@ input:focus{
     height: 63px;
     border-radius: 35px;
     background-color: rgba(152, 183, 220, 1);
+  }
+
+  #center{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* background-color: #f0f0f0; */
+    font-size: 90px;
+    padding: 20px;
+    /* border: 1px solid #ccc; */
+    text-align: center;
+    z-index: 1000; /* Ensure it's above other content */
+    background-color:rgba(126, 166, 212, 1) ;
+    width: 600px;
+    border-radius: 35px;
+    color: white;
+
+  }
+
+  .body-opacity{
+    opacity: 0.2;
+    transition: opacity 0.5s ease;
   }

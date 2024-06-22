@@ -17,11 +17,23 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
     ).then(response => {
         if (!response.ok) {
             console.error(response.statusText)
-            if (response.status == 401) {
-                window.location.href='/login';
-                // throw new Error(response.statusText);
+            if (response.status == 401){
+                console.error(response.statusText)
+                const message = document.getElementById('center');
+                message.style.display='block';
+                document.getElementById('page-body').classList.add('body-opacity');
+                setTimeout(() => {
+                    window.location.href="/login"
+                    setTimeout(() => {
+                        message.style.display='none';
+                        document.getElementById('page-body').classList.remove('body-opacity');
+                        
+                    }, 50);
+                }, 1500);
                 
+
             }
+            throw new Error(response.statusText);
         }
         else{
             return response.json()
