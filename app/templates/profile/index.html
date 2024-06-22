@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Users</title>
+    <link rel="stylesheet" href="../static/CSS/profile.css">
+</head>
+
+<body>
+    <div class="herotxt">Profile</div>
+    
+        <div onclick="localStorage.clear()" class="logoutbtn">
+            <a href="/login">Log out</a></div>
+    
+    {%if user%}
+    <div class="upper-box">
+        <div class="box">
+            <h1>{{user["user_name"]}}</h1>
+            <h3 class="email-txt">{{user["email"]}}</h3>
+            <div class="created-box">
+                <div class="crtby">Joined : </div>
+                <div>{{user["created_at"].strftime("%b %d %Y")}}</div>
+            </div>
+            <a href="/users/posts/{{user["id"]}}">
+                <div class="more-info">View Heros</div>
+            </a>
+
+        </div>
+    </div>
+    {% else %}
+    <div class="upper-box">
+        <div class="box">
+            <h1>You are not logged in</h1>
+        </div>
+    </div>
+    {% endif %}
+    <nav>
+        <div class="navitems">
+            <a href="/posts">
+                <div class="item1">All Heros</div>
+            </a>
+            <a>
+                <div id="myHeros" class="item2">My Heros</div>
+            </a>
+            <a href="/addhero">
+                <div class="item3">Add Hero</div>
+            </a>
+            <a>
+                <div class="item4">All Users</div>
+            </a>
+            <div class="item5">Profile</div>
+
+        </div>
+    </nav>
+    <!-- <script src="/static/JS/simple/script.js"></script> -->
+</body>
+
+</html>
