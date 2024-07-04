@@ -1,4 +1,5 @@
 #page-body{
+    z-index: -10;
     background-color: rgba(126, 166, 212, 0.78);
     height: 100vh;
     width: 100vw;
@@ -125,3 +126,8 @@ a {
     opacity: 0.2;
     transition: opacity 0.5s ease;
   }
+
+#signupForm{
+    background-color:rgba(126, 166, 212, 0.78);
+    height: 100vh;
+}
