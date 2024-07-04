@@ -23,9 +23,12 @@
                 <div class="crtby">Joined : </div>
                 <div>{{user["created_at"].strftime("%b %d %Y")}}</div>
             </div>
-            <a href="/users/posts/{{user["id"]}}">
-                <div class="more-info">View Heros</div>
+            <a >
+                <div class="delete-btn">delete</div>
             </a>
+            
+                <div class="more-info"><a style="width: 100%;height: 100%;" href="/users/posts/{{user["id"]}}">View Heros</a></div>
+            
 
         </div>
     </div>

@@ -132,6 +132,8 @@ a {
     display: inline-block; /* Allows background color to cover entire text */
     transition: all 0.3s ease; /* Smooth transition for background color */
     cursor: pointer;
+    display: grid;
+    place-items: center;
   }
 
   /* Hover state */
@@ -139,3 +141,11 @@ a:hover {
     text-decoration: underline; /* Underline on hover */
     color: rgb(99, 99, 94); /* Highlight color hover */
   }
+
+
+.delete-btn{
+    position: absolute;
+    margin-top: 25px;
+    font-size: xx-large;
+    color: #d9294be6;
+}
