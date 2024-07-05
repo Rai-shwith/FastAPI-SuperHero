@@ -94,3 +94,8 @@ def get_users_heros(request:Request,id:int,db :session = Depends(get_db)):
     user_heros = db.query(models.Post,func.count(models.Vote.post_id).label("likes")).filter(models.Post.owner_id == id).join(models.Vote,models.Vote.post_id == models.Post.id,isouter=True).group_by(models.Post.id).all()
     return templates.TemplateResponse("getuserheros/index.html",{"request":request,"hero_pack": user_heros})
 
+# This code will return the array of posts id that a given user has liked
+@router.get("/voted/{id}")
+def get_liked_heroes(id:int,db:session = Depends(get_db)):
+    user_liked_heroes = db.query(models.Vote).filter(models.Vote.user_id==id).all()
+    return [_.post_id  for  _ in user_liked_heroes ]
