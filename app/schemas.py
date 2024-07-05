@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Union
 from pydantic import BaseModel, EmailStr, conint
 
 
@@ -18,7 +18,7 @@ class RespondToEntryOfUser(BaseModel):
     created_at : datetime
 
 class SendPost(BaseModel):
-    id : str
+    id : Union[int,str]
     name : str
     alias : str
     owner_id : int
