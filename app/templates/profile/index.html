@@ -10,10 +10,11 @@
 
 <body>
     <div class="herotxt">Profile</div>
-    
-        <div onclick="localStorage.clear()" class="logoutbtn">
-            <a href="/login">Log out</a></div>
-    
+
+    <div onclick="localStorage.clear()" class="logoutbtn">
+        <a href="/login">Log out</a>
+    </div>
+
     {%if user%}
     <div class="upper-box">
         <div class="box">
@@ -23,12 +24,10 @@
                 <div class="crtby">Joined : </div>
                 <div>{{user["created_at"].strftime("%b %d %Y")}}</div>
             </div>
-            <a >
-                <div class="delete-btn">delete</div>
-            </a>
-            
-                <div class="more-info"><a style="width: 100%;height: 100%;" href="/users/posts/{{user["id"]}}">View Heros</a></div>
-            
+
+            <div class="more-info"><a style="width: 100%;height: 100%;" href="/users/posts/{{user[" id"]}}">View
+                    Heros</a></div>
+
 
         </div>
     </div>
@@ -44,7 +43,7 @@
             <a href="/posts">
                 <div class="item1">All Heros</div>
             </a>
-            <a >
+            <a>
                 <div id="myHeros" class="item2">My Heros</div>
             </a>
             <a href="/addhero">
