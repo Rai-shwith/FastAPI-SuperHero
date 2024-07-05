@@ -32,6 +32,7 @@ class SendPost(BaseModel):
 class PostOut(BaseModel):
     Post : SendPost
     likes : int
+    is_liked : bool
     class Config:
         from_attributes = True
 

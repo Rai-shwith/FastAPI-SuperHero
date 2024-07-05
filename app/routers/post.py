@@ -1,13 +1,14 @@
 from typing import List, Optional
 from fastapi import Depends, Request, status,HTTPException,APIRouter
 from fastapi.staticfiles import StaticFiles
-from sqlalchemy import func
+from sqlalchemy import func, literal_column
 from ..database import get_db
 from sqlalchemy.orm import session
 from .. import schemas,models
 from . import oauth2
 from fastapi.templating import Jinja2Templates
 import os
+from ..utils import add_is_liked
 
 router = APIRouter(
     prefix="/posts",
@@ -29,8 +30,14 @@ def get_all( request: Request,db:session=Depends(get_db),limit:int =10000,skip:i
     # return results
 
 @router.get("/api",response_model=List[schemas.PostOut])
-def get_all( request: Request,db:session=Depends(get_db),limit:int =10000,skip:int = 0,search : Optional[str]=""):
+def get_all( request: Request,current_user:int= Depends(oauth2.get_current_user),db:session=Depends(get_db),limit:int =10000,skip:int = 0,search : Optional[str]=""):
     results = db.query(models.Post,func.count(models.Vote.post_id).label("likes")).filter(models.Post.alias.contains(search)).join(models.Vote,models.Vote.post_id == models.Post.id,isouter=True).group_by(models.Post.id).limit(limit).offset(skip).all()
+    if current_user:
+        user_liked_heroes = db.query(models.Vote).filter(models.Vote.user_id==current_user.id).all()
+        user_liked_heroes = [_.post_id  for  _ in user_liked_heroes ]  
+    else:
+        user_liked_heroes = []
+    results = add_is_liked(results,user_liked_heroes)
     return results
 
 
