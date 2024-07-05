@@ -21,7 +21,7 @@ templates = Jinja2Templates(directory="app/templates/")
 @router.get("/", response_model =List[schemas.RespondToEntryOfUser])
 def  give_all_users(request: Request,db:session=Depends(get_db)):
     users = db.query(models.Users).all()
-    return templates.TemplateResponse('getallusers/index.html',{"request":request,"users":users})
+    return templates.TemplateResponse('getallusers/index.html',{"request":request,"users":users[::-1]})
     # return users
 
 # This block is used to create a new user in table users
