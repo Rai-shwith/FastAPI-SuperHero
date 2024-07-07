@@ -25,7 +25,7 @@ def add_is_liked(result:list[dict],user_liked_heros:list[int]):
             "likes":i[1],
             "is_liked":False
             }
-        if i[0].id in user_liked_heros:
+        if int(i[0].id) in user_liked_heros:
             tempdict["is_liked"]=True
         temp.append(tempdict)
     return temp
