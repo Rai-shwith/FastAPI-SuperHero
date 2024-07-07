@@ -6,6 +6,8 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
         "name": name,
         "alias": alias
     }
+    document.getElementById('heroName').value = '';
+    document.getElementById('personName').value = '';
     fetch('/posts/', {
         method: 'POST',
         headers: {
