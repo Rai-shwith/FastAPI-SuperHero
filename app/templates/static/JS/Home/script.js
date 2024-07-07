@@ -44,7 +44,7 @@ fetch("api", {
             </div>
             <div id="like-box" onclick="toggleHeart(${hero_index},'${data[hero_index]["Post"]["id"]}')">
                 <div id="like">
-                    <img id="like-img${hero_index}" style="position: absolute;" src=${heartSrc} alt=""
+                    <img draggable="false" id="like-img${hero_index}" style="position: absolute;" src=${heartSrc} alt=""
                         srcset="">
                     <span id="likeCount${hero_index}" style="position: absolute; z-index: 1;">${data[hero_index]["likes"]}</span>
                 </div>
