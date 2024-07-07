@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    if (localStorage.token) {
+    if (localStorage.token && localStorage.token!='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5ODM4OTc0MTgzNjcxMzk4NDEsImV4cCI6MTcyMTE5NjA4Mn0.Q8si-ntjlU6QiMw0Iks0fGv6wTf0C6KUd9eL2Mn6DME') {
         const message = document.getElementById('center');
         message.innerHTML = 'Successfully Logged in'
         message.style.color = 'green'

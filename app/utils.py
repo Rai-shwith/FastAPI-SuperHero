@@ -18,6 +18,8 @@ def verify(plain_pwd,hashed_pwd):
 def add_is_liked(result:list[dict],user_liked_heros:list[int]):
     temp=[]
     for i in result:
+        i[0].id=str(i[0].id)
+        i[0].owner_id=str(i[0].owner_id)
         tempdict={
             "Post":i[0],
             "likes":i[1],

@@ -63,22 +63,6 @@ document.getElementById('profile').addEventListener('click', ev => {
     })
 })
 
-// document.getElementById('like-box').addEventListener('click',function(clicked){
-//     console.log(clicked)
-// })
-
-function toggleHeart(id) {
-    const src = 'like-img' + id
-    console.log(src)
-    const img = document.getElementById(src);
-    if (img.src.endsWith('blankheart.png')) {
-        console.log("OALSKDFJOI")
-        img.src = '../static/images/filledheart.png'; // Change to filled heart image
-    } else {
-        img.src = '../static/images/blankheart.png'; // Change to empty heart image
-    }
-}
-
 
 function deleteAccount() {
     id = window.location.pathname.substring(7)//THis is because I cannot transfer large int from html so iam using id from the endpoint
