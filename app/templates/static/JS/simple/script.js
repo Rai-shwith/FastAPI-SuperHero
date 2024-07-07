@@ -65,6 +65,7 @@ document.getElementById('profile').addEventListener('click', ev => {
 
 
 function deleteAccount() {
+    if (confirm('Are you sure you want to delete?')){
     id = window.location.pathname.substring(7)//THis is because I cannot transfer large int from html so iam using id from the endpoint
     fetch(`/users/${id}`, {
         method: 'DELETE',
@@ -76,5 +77,5 @@ function deleteAccount() {
             localStorage.clear()
             console.log("Account Deleted")
             window.location.href = "/login"
-        }})
-}
+            }})
+}}
