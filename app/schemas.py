@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional, Union
+from typing import Optional
 from pydantic import BaseModel, EmailStr, conint
 
 
@@ -18,10 +18,10 @@ class RespondToEntryOfUser(BaseModel):
     created_at : datetime
 
 class SendPost(BaseModel):
-    id : Union[int,str]
+    id : str
     name : str
     alias : str
-    owner_id : int
+    owner_id : str
     owner : RespondToEntryOfUser
     # current_user : EmailStr
     # joined_on : datetime
