@@ -6,6 +6,10 @@ body {
     align-items: center;
     justify-content: center;
 }
+/* Remove outline on click for all elements */
+:focus {
+    outline: none;
+}
 
 nav {
     position: sticky;
