@@ -1,25 +1,35 @@
-if (!localStorage.token){
-    localStorage.setItem('token',"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5ODM4OTc0MTgzNjcxMzk4NDEsImV4cCI6MTcyMTE5NjA4Mn0.Q8si-ntjlU6QiMw0Iks0fGv6wTf0C6KUd9eL2Mn6DME")
+var likedList = []
+var unLikedList = []
+if (!localStorage.token) {
+    var dummyToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5ODM4OTc0MTgzNjcxMzk4NDEsImV4cCI6MTcyMTE5NjA4Mn0.Q8si-ntjlU6QiMw0Iks0fGv6wTf0C6KUd9eL2Mn6DME"
+    localStorage.setItem('token', dummyToken)
 }
-fetch("api",{
+fetch("api", {
     method: "GET",
     headers: {
         'Authorization': `Bearer ${localStorage.token}`
     }
-}).then(response=>{
-    if (!response.ok){
+}).then(response => {
+    if (!response.ok) {
         console.error(response.statusText)
     }
     return response.json()
-}).then(data =>{
-    topStr=`<div style="display: none;" id="center">You are not logged in</div>
+}).then(data => {
+    topStr = `<div style="display: none;" id="center">You are not logged in</div>
     <div id="page-body">
         <div class="herotxt">Super Heros</div>
         `
-    boxStr=""
-    if (data.length){
-    for (let hero_index=0;hero_index<data.length;hero_index++) {
-        boxStr+=`<div class="upper-box">
+    boxStr = ""
+    if (data.length) {
+        for (let hero_index = 0; hero_index < data.length; hero_index++) {
+            if (data[hero_index]["is_liked"]) {
+                heartSrc = "/static/images/filledheart.png"
+            }
+            else {
+                heartSrc = "/static/images/blankheart.png"
+            }
+
+            boxStr += `<div class="upper-box">
             <div class="box">
                 <h1>${data[hero_index]["Post"]["alias"]}</h1>
                 <h3>${data[hero_index]["Post"]["name"]}</h3>
@@ -32,25 +42,26 @@ fetch("api",{
                 </a>
 
             </div>
-            <div id="like-box" onclick="toggleHeart(${hero_index})">
+            <div id="like-box" onclick="toggleHeart(${hero_index},'${data[hero_index]["Post"]["id"]}')">
                 <div id="like">
-                    <img id="like-img${hero_index}" style="position: absolute;" src="/static/images/blankheart.png" alt=""
+                    <img id="like-img${hero_index}" style="position: absolute;" src=${heartSrc} alt=""
                         srcset="">
-                    <span style="position: absolute; z-index: 1;">${data[hero_index]["likes"]}</span>
+                    <span id="likeCount${hero_index}" style="position: absolute; z-index: 1;">${data[hero_index]["likes"]}</span>
                 </div>
             
             </div>
         </div>`
-    }}
-    else{
-        boxStr+=`<div class="upper-box">
+        }
+    }
+    else {
+        boxStr += `<div class="upper-box">
             <div class="box">
                 <h1>No Hero</h1>
             </div>
         </div>`
     }
-    document.getElementById('placeholder').innerHTML=topStr+boxStr;
-    document.getElementsByTagName('nav')[0].style.display='block';
+    document.getElementById('placeholder').innerHTML = topStr + boxStr;
+    document.getElementsByTagName('nav')[0].style.display = 'block';
 })
 
 
@@ -122,16 +133,77 @@ document.getElementById('profile').addEventListener('click', ev => {
     })
 })
 
-function toggleHeart(id) {
+function toggleHeart(id, postId) {
     const src = 'like-img' + id
-    console.log(src)
     const img = document.getElementById(src);
-    if (img.src.endsWith('blankheart.png')) {
-        console.log("OALSKDFJOI")
-        img.src = '../static/images/filledheart.png'; // Change to filled heart image
-    } else {
-        img.src = '../static/images/blankheart.png'; // Change to empty heart image
+    if (localStorage.token && localStorage.token == dummyToken) {
+        console.error("You are not logged in")
     }
+    else if (img.src.endsWith('blankheart.png')) {
+        if (unLikedList.includes(postId)) {
+            unLikedList.filter(item => item != postId)
+        }
+        else { likedList.push(postId) }
+
+        likeNum = document.getElementById(`likeCount${id}`)
+        likeNum.innerHTML = parseInt(likeNum.innerHTML) + 1
+        img.src = '../static/images/filledheart.png'; // Change to filled heart image
+
+    } else {
+        if (likedList.includes(postId)) {
+            likedList.filter(item => item != postId)
+        }
+        else { unLikedList.push(postId) }
+
+        likeNum = document.getElementById(`likeCount${id}`)
+        likeNum.innerHTML = parseInt(likeNum.innerHTML) - 1
+        img.src = '../static/images/blankheart.png'; // Change to empty heart image
+
+    }
+
 }
+
+window.addEventListener('beforeunload', () => {
+
+    unLikedList.forEach(element => {
+        data = {
+            "post_id": element,
+            "direction": 0
+        }
+        fetch('/vote', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.token}`
+            },
+            body: JSON.stringify(data)
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error(response.statusText)
+            }
+
+        }).catch(error => { console.error(error) });
+    })
+
+    likedList.forEach(element => {
+        data = {
+            "post_id": element,
+            "direction": 1
+        }
+        fetch('/vote', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.token}`
+            },
+            body: JSON.stringify(data)
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error(response.statusText)
+            }
+
+        }).catch(error => { console.error(error) });
+    })
+})
 
 
