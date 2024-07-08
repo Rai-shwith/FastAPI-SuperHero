@@ -131,3 +131,30 @@ a {
     background-color:rgba(126, 166, 212, 0.78);
     height: 100vh;
 }
+
+@media (width<=460px) {
+    .credential-input {
+        width: 75vw;
+        height: 4.5vh;
+        border-radius: 15px;
+        font-size: 1rem;
+        text-indent: 30px;
+      }
+      .login_head {
+        font-size: 3rem;
+        margin-bottom: 79px;
+      }
+      .loginbtn {
+        height: 4vh;
+        width: 22vw;
+        border-radius: 13px;
+        font-size: 0.7rem;
+      }
+      .sticky-back{
+        font-size: 1rem;
+      }
+      .credential-input::placeholder {
+        font-size: 1rem;
+        text-indent: 30px;
+      }
+}
