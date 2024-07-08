@@ -171,4 +171,11 @@ input::placeholder{
  .back-btn{
   font-size: 1rem;
  }
+ #center{
+  width: 80vw;
+  height: 20vh;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
 }

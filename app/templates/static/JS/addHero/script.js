@@ -22,7 +22,7 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
             if (response.status == 401) {
                 console.error(response.statusText)
                 const message = document.getElementById('center');
-                message.style.display = 'block';
+                message.style.display = 'flex';
                 document.getElementById('page-body').classList.add('body-opacity');
                 setTimeout(() => {
                     window.location.href = "/login"
@@ -47,7 +47,7 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
             const message = document.getElementById('center');
             message.innerHTML = `${data.alias} is Succesfully Added`
             message.style.color = 'green'
-            message.style.display = 'block';
+            message.style.display = 'flex';
             document.getElementById('page-body').classList.add('body-opacity');
             setTimeout(() => {
 

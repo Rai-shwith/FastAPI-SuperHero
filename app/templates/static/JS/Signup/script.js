@@ -19,7 +19,7 @@ document.getElementById('signupForm').addEventListener('submit', function (event
             if (response.status== 422){
                 console.error(response.statusText)
                 const message = document.getElementById('center');
-                message.style.display='block';
+                message.style.display='flex';
                 document.getElementById('page-body').classList.add('body-opacity');
                 setTimeout(() => {
 
@@ -33,7 +33,7 @@ document.getElementById('signupForm').addEventListener('submit', function (event
                 console.error(response.statusText)
                 const message = document.getElementById('center');
                 message.innerHTML='Email Already Exist'
-                message.style.display='block';
+                message.style.display='flex';
                 document.getElementById('page-body').classList.add('body-opacity');
                 setTimeout(() => {
 
@@ -77,7 +77,7 @@ document.getElementById('signupForm').addEventListener('submit', function (event
                 const message = document.getElementById('center');
                 message.innerHTML='Successfully Signed up'
                 message.style.color='green'
-                message.style.display='block';
+                message.style.display='flex';
                 document.getElementById('page-body').classList.add('body-opacity');
                 setTimeout(() => {
                     window.location.href ="/heros"

@@ -131,6 +131,10 @@ a {
     background-color:rgba(126, 166, 212, 0.78);
     height: 100vh;
 }
+#loginForm {
+  background-color: rgba(126, 166, 212, 0.78);
+  height: 100vh;
+}
 
 @media (width<=460px) {
     .credential-input {
@@ -156,5 +160,12 @@ a {
       .credential-input::placeholder {
         font-size: 1rem;
         text-indent: 30px;
+      }
+      #center{
+        width: 80vw;
+        height: 20vh;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
       }
 }
