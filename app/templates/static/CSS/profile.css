@@ -198,7 +198,7 @@ a:hover {
     nav {
         position: absolute;
         bottom: 0;
-        height: auto;
+        height: 51px;
     }
 
     .navitems {
@@ -250,7 +250,7 @@ a:hover {
     }
 
     .more-info {
-        font-size: 1rem;
+        font-size: 0.5rem;
         width: 25vw;
         height: 4vh;
         margin-top: 18%;
