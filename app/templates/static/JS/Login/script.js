@@ -75,7 +75,7 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
             setTimeout(() => {
                 document.getElementById('loginEmail').value = '';
                 document.getElementById('loginPassword').value = '';
-                window.location.href = "/posts"
+                window.location.href = "/heros"
                 setTimeout(() => {
                     message.style.display = 'none';
                     message.innerHTML = 'Invalid Credentials'
