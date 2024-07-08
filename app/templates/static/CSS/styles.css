@@ -1,171 +1,197 @@
-#page-body{
-    z-index: -10;
-    background-color: rgba(126, 166, 212, 0.78);
-    height: 100vh;
-    width: 100vw;
+#page-body {
+  z-index: -10;
+  background-color: rgba(126, 166, 212, 0.78);
+  height: 100vh;
+  width: 100vw;
 }
 
-body{
-    padding: 0;
-    margin: 0;
+body {
+  padding: 0;
+  margin: 0;
 }
 
-.welcometxt{
-    color: white;
-    font-size: 48px;
-    text-align: center;
-    margin-top: 232px;
+.welcometxt {
+  color: white;
+  font-size: 48px;
+  text-align: center;
+  margin-top: 232px;
 
 }
 
-.big-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-    /* margin-top: 232px; */
+.big-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  /* margin-top: 232px; */
 }
 
-.btns{
-    width: 516px;
-    height: 103px;
-    background-color: rgba(82, 114, 152, 1);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 36px;
-    /* margin: 79px 0; */
-    box-sizing: border-box;
-    border-radius: 35px;
+.btns {
+  width: 516px;
+  height: 103px;
+  background-color: rgba(82, 114, 152, 1);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  /* margin: 79px 0; */
+  box-sizing: border-box;
+  border-radius: 35px;
 }
 
-.credential-input{
-    background-color: rgba(82, 114, 152, 1);
-    width: 626px;
-    height: 87px;
-    border-radius: 35px;
-    border: hidden;
-    font-size: 32px;
-    text-indent:90px ;
-}
-.credential-input::placeholder{
-    color: rgba(255, 255, 255, 0.25);
-    font-size: 32px;
-    text-indent: 89px;
+.credential-input {
+  background-color: rgba(82, 114, 152, 1);
+  width: 626px;
+  height: 87px;
+  border-radius: 35px;
+  border: hidden;
+  font-size: 32px;
+  text-indent: 90px;
 }
 
-.loginbtn{
-    background-color: rgba(82, 114, 152, 1);
-    color: white;
-    height: 87px;
-    width: 297px;
-    border-radius: 35px;
-    font-size:32px ;
-    display: flex;  
-    justify-content: center;
-    align-items: center;
+.credential-input::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 32px;
+  text-indent: 89px;
 }
 
-.login_head{
-    color: white;
-    font-size: 96px;
-    margin-bottom: 95px;
+.loginbtn {
+  background-color: rgba(82, 114, 152, 1);
+  color: white;
+  height: 87px;
+  width: 297px;
+  border-radius: 35px;
+  font-size: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_head {
+  color: white;
+  font-size: 96px;
+  margin-bottom: 95px;
 }
 
 a {
-    text-decoration: none; /* Remove default underline */
-    color: inherit; /* Inherit text color from parent */
-    position: relative; /* Needed for pseudo-elements */
-    display: inline-block; /* Allows background color to cover entire text */
-    transition: all 0.3s ease; /* Smooth transition for background color */
-    cursor: pointer;
+  text-decoration: none;
+  /* Remove default underline */
+  color: inherit;
+  /* Inherit text color from parent */
+  position: relative;
+  /* Needed for pseudo-elements */
+  display: inline-block;
+  /* Allows background color to cover entire text */
+  transition: all 0.3s ease;
+  /* Smooth transition for background color */
+  cursor: pointer;
 
-  }
-
-  /* Hover state */
-  a:hover {
-    text-decoration: underline; /* Underline on hover */
-    color: rgb(99, 99, 94); /* Highlight color hover */
-  }
-  .sticky-back{
-    display: flex;
-    flex-direction: column;
-    gap:  15px;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 10;
-    padding: 10px;
-    /* border: solid grey 2px; */
-    /* border-radius: 20px; */
-    font-size: 30px;
-    color: white;
-  }
-
-  #center{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* background-color: #f0f0f0; */
-    font-size: 90px;
-    padding: 20px;
-    /* border: 1px solid #ccc; */
-    text-align: center;
-    z-index: 1000; /* Ensure it's above other content */
-    background-color:rgba(126, 166, 212, 1) ;
-    width: 600px;
-    border-radius: 35px;
-    color: white;
-
-  }
-
-  .body-opacity{
-    opacity: 0.2;
-    transition: opacity 0.5s ease;
-  }
-
-#signupForm{
-    background-color:rgba(126, 166, 212, 0.78);
-    height: 100vh;
 }
+
+/* Hover state */
+a:hover {
+  text-decoration: underline;
+  /* Underline on hover */
+  color: rgb(99, 99, 94);
+  /* Highlight color hover */
+}
+
+.sticky-back {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  padding: 10px;
+  /* border: solid grey 2px; */
+  /* border-radius: 20px; */
+  font-size: 30px;
+  color: white;
+}
+
+#center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: #f0f0f0; */
+  font-size: 90px;
+  padding: 20px;
+  /* border: 1px solid #ccc; */
+  text-align: center;
+  z-index: 1000;
+  /* Ensure it's above other content */
+  background-color: rgba(126, 166, 212, 1);
+  width: 600px;
+  border-radius: 35px;
+  color: white;
+
+}
+
+.body-opacity {
+  opacity: 0.2;
+  transition: opacity 0.5s ease;
+}
+
+#signupForm {
+  background-color: rgba(126, 166, 212, 0.78);
+  height: 100vh;
+}
+
 #loginForm {
   background-color: rgba(126, 166, 212, 0.78);
   height: 100vh;
 }
 
 @media (width<=460px) {
-    .credential-input {
-        width: 75vw;
-        height: 4.5vh;
-        border-radius: 15px;
-        font-size: 1rem;
-        text-indent: 30px;
-      }
-      .login_head {
-        font-size: 3rem;
-        margin-bottom: 79px;
-      }
-      .loginbtn {
-        height: 4vh;
-        width: 22vw;
-        border-radius: 13px;
-        font-size: 0.7rem;
-      }
-      .sticky-back{
-        font-size: 1rem;
-      }
-      .credential-input::placeholder {
-        font-size: 1rem;
-        text-indent: 30px;
-      }
-      #center{
-        width: 80vw;
-        height: 20vh;
-        justify-content: center;
-        align-items: center;
-        font-size: 2rem;
-      }
+  .credential-input {
+    width: 75vw;
+    height: 4.5vh;
+    border-radius: 15px;
+    font-size: 1rem;
+    text-indent: 30px;
+  }
+
+  .login_head {
+    font-size: 3rem;
+    margin-bottom: 79px;
+  }
+
+  .loginbtn {
+    height: 4vh;
+    width: 22vw;
+    border-radius: 13px;
+    font-size: 0.7rem;
+  }
+
+  .sticky-back {
+    font-size: 1rem;
+  }
+
+  .credential-input::placeholder {
+    font-size: 1rem;
+    text-indent: 30px;
+  }
+
+  #center {
+    width: 80vw;
+    height: 20vh;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+  }
+
+  .btns {
+    width: 80vw;
+    height: 4vh;
+    font-size: 1rem;
+    border-radius: 15px;
+  }
+  .welcometxt{
+    font-size: 2rem;
+  }
 }
