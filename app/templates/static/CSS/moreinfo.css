@@ -1,5 +1,5 @@
-body{
-    background-color:rgba(126, 166, 212, 0.78) ;
+body {
+    background-color: rgba(126, 166, 212, 0.78);
     color: white;
     display: flex;
     justify-content: center;
@@ -7,11 +7,11 @@ body{
     flex-direction: column;
 }
 
-.main-box{
-    background-color:rgba(82, 114, 152, 1) ;
+.main-box {
+    background-color: rgba(82, 114, 152, 1);
     width: 906px;
     height: 700px;
-    border-radius: 35px;    
+    border-radius: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,30 +30,30 @@ body{
     /* position: absolute; */
 }
 
-.like-svg{
+.like-svg {
     width: 64px;
     height: 64px;
     position: absolute;
     right: 415px;
     bottom: 22px;
-    
+
 }
 
-.main-txt{
+.main-txt {
     font-size: 96px;
     position: absolute;
     top: 58.18px;
 }
 
-.hero-name{
-    font-size:48px ;
+.hero-name {
+    font-size: 48px;
     position: absolute;
     left: 52px;
     top: 191px;
     /* transform: translate(0, -50%); */
 }
 
-.info-box{
+.info-box {
     top: 280px;
     position: absolute;
     font-size: 32px;
@@ -62,63 +62,122 @@ body{
     align-items: center;
     flex-direction: column;
     gap: 11px;
-    background-color:rgba(94, 133, 180, 0.74) ;
+    background-color: rgba(94, 133, 180, 0.74);
     border-radius: 35px;
     width: 562px;
     height: 317px;
 
 }
 
-.info-txt{
+.info-txt {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:  5px;
+    gap: 5px;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-.back-btn{
+.back-btn {
     position: absolute;
     width: 185px;
     height: 63px;
-    background-color:rgba(152, 183, 220, 1) ;
+    background-color: rgba(152, 183, 220, 1);
     border-radius: 35px;
     bottom: -320px;
-    left:-400px ;
+    left: -400px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.my-hero-btn{
+.my-hero-btn {
     position: absolute;
     width: 185px;
     height: 63px;
-    background-color:rgba(152, 183, 220, 1) ;
+    background-color: rgba(152, 183, 220, 1);
     border-radius: 35px;
     bottom: -320px;
-    right:-400px ;
+    right: -400px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 a {
-    text-decoration: none; /* Remove default underline */
-    color: inherit; /* Inherit text color from parent */
-    position: relative; /* Needed for pseudo-elements */
-    display: inline-block; /* Allows background color to cover entire text */
-    transition: all 0.3s ease; /* Smooth transition for background color */
+    text-decoration: none;
+    /* Remove default underline */
+    color: inherit;
+    /* Inherit text color from parent */
+    position: relative;
+    /* Needed for pseudo-elements */
+    display: inline-block;
+    /* Allows background color to cover entire text */
+    transition: all 0.3s ease;
+    /* Smooth transition for background color */
     cursor: pointer;
 
-  }
+}
 
-  /* Hover state */
+/* Hover state */
 a:hover {
-    text-decoration: underline; /* Underline on hover */
-    color: rgb(99, 99, 94); /* Highlight color hover */
-  }
+    text-decoration: underline;
+    /* Underline on hover */
+    color: rgb(99, 99, 94);
+    /* Highlight color hover */
+}
+
+
+@media (width<=460px) {
+    .main-box {
+        height: 40vh;
+        width: 90vw;
+    }
+
+    .hero-name {
+        font-size: 1.2rem;
+        top: 12vh;
+    }
+
+    .main-txt {
+        font-size: 3.5rem;
+        top: 3vh;
+    }
+
+    .info-box {
+        width: 60vw;
+        height: 17vh;
+        top: 17vh;
+        border-radius: 15px;
+        font-size: 0.8rem;
+    }
+    .back-btn {
+        width: 18vw;
+        height: 3.25vh;
+        border-radius: 15px;
+        bottom: -19vh;
+        left: -18vh;
+        font-size: 0.5rem;
+      }
+      .my-hero-btn {
+        width: 18vw;
+        height: 3.25vh;
+        border-radius: 15px;
+        bottom: -19vh;
+        right: -40vw;
+        font-size: 0.5rem;
+      }
+      .like-svg {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        right: 38vw;
+        bottom: 0vh;
+    }
+    .like-count{
+        font-size: 0.5rem;
+    }
+}
