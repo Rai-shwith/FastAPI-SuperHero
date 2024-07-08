@@ -160,7 +160,7 @@ a:hover {
     nav {
         position: sticky;
         bottom: 0;
-        height: auto;
+        height: 51px;
     }
 
     .navitems {
@@ -183,7 +183,7 @@ a:hover {
         border-radius: 15px;
         font-size: 0.5rem;
     }
-    .item1 {
+    .item2 {
         background-color: rgba(149, 186, 228, 1);
     }
 
@@ -215,7 +215,7 @@ a:hover {
     }
 
     .more-info {
-        font-size: 1rem;
+        font-size: 0.5rem;
         width: 25vw;
         height: 4vh;
         margin-top: 63%;
