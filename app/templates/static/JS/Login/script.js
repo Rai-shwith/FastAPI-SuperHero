@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         message.style.display = 'block';
         document.getElementById('page-body').classList.add('body-opacity');
         setTimeout(() => {
-            window.location.href = "/posts"
+            window.location.href = "/heros"
             setTimeout(() => {
                 message.style.display = 'none';
                 message.innerHTML = 'Invalid Credentials'
@@ -54,7 +54,19 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
         })
         .then(data => {
             localStorage.setItem('token', data.acess_token);
-            localStorage.setItem('tokenType', data.token_type);
+            fetch('/users/id',{
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            }).then(response =>{
+                if (!response.ok){
+                    throw new Error("Error while sending info: ", response.statusText)
+                }
+                return response.json();
+            }).then(data=>{
+                localStorage.setItem('userId', data.id);
+            }).catch(error=>console.error(error))
             const message = document.getElementById('center');
             message.innerHTML = 'Successfully Logged in'
             message.style.color = 'green'

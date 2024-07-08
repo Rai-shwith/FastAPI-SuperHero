@@ -34,7 +34,7 @@ body{
     width: 64px;
     height: 64px;
     position: absolute;
-    right: 100px;
+    right: 415px;
     bottom: 22px;
     
 }
@@ -89,6 +89,19 @@ body{
     border-radius: 35px;
     bottom: -320px;
     left:-400px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-hero-btn{
+    position: absolute;
+    width: 185px;
+    height: 63px;
+    background-color:rgba(152, 183, 220, 1) ;
+    border-radius: 35px;
+    bottom: -320px;
+    right:-400px ;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -5,7 +5,22 @@ if (!localStorage.token) {
     var dummyToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5ODM4OTc0MTgzNjcxMzk4NDEsImV4cCI6MTcyMTE5NjA4Mn0.Q8si-ntjlU6QiMw0Iks0fGv6wTf0C6KUd9eL2Mn6DME"
     localStorage.setItem('token', dummyToken)
 }
-fetch("/posts/api", {
+
+if (!localStorage.userId) {
+    console.error(response.statusText)
+    const message = document.getElementById('center');
+    message.style.display = 'block';
+    document.getElementById('page-body').classList.add('body-opacity');
+    setTimeout(() => {
+        window.location.href = "/login"
+        setTimeout(() => {
+            message.style.display = 'none';
+            document.getElementById('page-body').classList.remove('body-opacity');
+
+        }, 50);
+    }, 1500);
+} else {
+fetch(`/users/posts/${localStorage.userId}`, {
     method: "GET",
     headers: {
         'Authorization': `Bearer ${localStorage.token}`
@@ -16,10 +31,8 @@ fetch("/posts/api", {
     }
     return response.json()
 }).then(data => {
-    topStr = `<div style="display: none;" id="center">You are not logged in</div>
-    <div id="page-body">
-        <div class="herotxt">Super Heros</div>
-        `
+    console.log(data)
+    topStr = `<div class="sticky-back"><a href="javascript:history.back()">Back</a> </div>`
     boxStr = ""
     if (data.length) {
         for (let hero_index = 0; hero_index < data.length; hero_index++) {
@@ -43,6 +56,7 @@ fetch("/posts/api", {
                 </a>
 
             </div>
+            
             <div id="like-box" onclick="toggleHeart(${hero_index},'${data[hero_index]["Post"]["id"]}')">
                 <div id="like">
                     <img draggable="false" id="like-img${hero_index}" style="position: absolute;" src=${heartSrc} alt=""
@@ -64,63 +78,7 @@ fetch("/posts/api", {
     document.getElementById('placeholder').innerHTML = topStr + boxStr;
     document.getElementsByTagName('nav')[0].style.display = 'block';
 })
-
-
-
-
-
-// document.getElementById('myHeros').addEventListener('click', ev => {
-//     fetch('/users/id', {
-//         method: 'GET',
-//         headers: {
-//             'Authorization': `Bearer ${localStorage.token}`
-//         }
-//     }).then(response => {
-//         if (!response.ok) {
-//             if (response.status == 401) {
-//                 console.error(response.statusText)
-//                 const message = document.getElementById('center');
-//                 message.style.display = 'block';
-//                 document.getElementById('page-body').classList.add('body-opacity');
-//                 setTimeout(() => {
-//                     window.location.href = "/login"
-//                     setTimeout(() => {
-//                         message.style.display = 'none';
-//                         document.getElementById('page-body').classList.remove('body-opacity');
-
-//                     }, 50);
-//                 }, 1500);
-
-
-//             }
-//             throw new Error(response.statusText);
-//         }
-//         return response.json();
-//     }).then(userId => {
-//         id = userId.id;
-//         window.location.href = `/users/posts/${id}`;
-//     })
-// })
-document.getElementById('profile').addEventListener('click', ev => {
-    if (!localStorage.userId) {
-        console.error(response.statusText)
-        const message = document.getElementById('center');
-        message.style.display = 'block';
-        document.getElementById('page-body').classList.add('body-opacity');
-        setTimeout(() => {
-            window.location.href = "/login"
-            setTimeout(() => {
-                message.style.display = 'none';
-                document.getElementById('page-body').classList.remove('body-opacity');
-
-            }, 50);
-        }, 1500);
-
-
-    } else {
-        window.location.href = `/users/${localStorage.userId}`;
-    }
-})
+}
 
 function toggleHeart(id, postId) {
     const src = 'like-img' + id
@@ -194,5 +152,31 @@ window.addEventListener('beforeunload', () => {
         }).catch(error => { console.error(error) });
     })
 })
+
+document.getElementById('profile').addEventListener('click', ev => {
+    if (!localStorage.userId) {
+        console.error(response.statusText)
+        const message = document.getElementById('center');
+        message.style.display = 'block';
+        document.getElementById('page-body').classList.add('body-opacity');
+        setTimeout(() => {
+            window.location.href = "/login"
+            setTimeout(() => {
+                message.style.display = 'none';
+                document.getElementById('page-body').classList.remove('body-opacity');
+
+            }, 50);
+        }, 1500);
+
+
+    } else {
+        window.location.href = `/users/${localStorage.userId}`;
+    }
+})
+
+
+
+
+
 
 

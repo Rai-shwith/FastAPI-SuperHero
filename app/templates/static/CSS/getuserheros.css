@@ -45,22 +45,31 @@ nav{
     font-size: 32px;
 }
 
-
-.like-box {
+.item2{
+    background-color:rgba(149, 186, 228, 1) ;
+}
+#like-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* position: absolute; */
 }
 
-.like-svg{
+#like{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 64px;
     height: 64px;
     position: absolute;
     right: 100px;
     bottom: 22px;
+    cursor: pointer;
     
 }
+#like:active{
+    transform: scale(1.2);
+}
+
 
 
 .herotxt{
