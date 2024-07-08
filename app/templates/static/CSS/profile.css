@@ -3,6 +3,7 @@
     margin: 0;
     overflow: hidden;
 }
+
 body {
     background-color: rgba(126, 166, 212, 0.78);
     color: white;
@@ -11,6 +12,7 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 /* Remove outline on click for all elements */
 :focus {
     outline: none;
@@ -192,75 +194,125 @@ a:hover {
 }
 
 @media (width<=460px) {
-    
-nav {
-    position: absolute;
-    bottom: 0;
-    height: auto;
-}
 
-.navitems {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100vw;
-    height: 51px;
-    background-color: rgba(140, 185, 238, 1);
-    border-radius: 35px;
-}
+    nav {
+        position: absolute;
+        bottom: 0;
+        height: auto;
+    }
 
-.navitems * {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 54px;
-    height: 26px;
-    background-color: rgba(82, 114, 152, 1);
-    border-radius: 15px;
-    font-size: 0.5rem;
-}
+    .navitems {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100vw;
+        height: 51px;
+        background-color: rgba(140, 185, 238, 1);
+        border-radius: 35px;
+    }
+
+    .navitems * {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 54px;
+        height: 26px;
+        background-color: rgba(82, 114, 152, 1);
+        border-radius: 15px;
+        font-size: 0.5rem;
+    }
 
 
-.upper-box {
-    height: 40vh;
-    width: 90vw;
-    margin-top: 25vh;
-    margin-bottom: 144px;
-}
-h1 {
-    font-size: 3rem;
-}
+    .upper-box {
+        height: 40vh;
+        width: 90vw;
+        margin-top: 25vh;
+        margin-bottom: 144px;
+    }
 
-h3 {
-    font-size: 0.8rem;
-   font-weight: 100;
-}
+    h1 {
+        font-size: 3rem;
+    }
 
-.created-box {
-    font-size: 1rem;
-    margin-top: 55px;
-    font-weight: 100;
-}
+    h3 {
+        font-size: 0.8rem;
+        font-weight: 100;
+    }
 
-.email-txt {
-    margin-left: 0.3rem;
-}
-.more-info {
-    font-size: 1rem;
-    width: 25vw;
-    height: 4vh;
-    margin-top: 18%;
+    .created-box {
+        font-size: 1rem;
+        margin-top: 55px;
+        font-weight: 100;
+    }
 
-}
-.delete-btn {
-    max-width: 30px;
-    max-height: 30px;
-    bottom: 1px;
-}
-.logoutbtn {
-    font-size: 1.5rem;
-    width: 117px;
-    height: 40px;
-}
+    .email-txt {
+        margin-left: 0.3rem;
+    }
+
+    .more-info {
+        font-size: 1rem;
+        width: 25vw;
+        height: 4vh;
+        margin-top: 18%;
+
+    }
+
+    .delete-btn {
+        max-width: 30px;
+        max-height: 30px;
+        bottom: 1px;
+    }
+
+    .logoutbtn {
+        font-size: 1.5rem;
+        width: 117px;
+        height: 40px;
+    }
+
+    .item5 {
+        background-color: rgba(149, 186, 228, 1);
+    }
+
+    :focus {
+        outline: none;
+    }
+
+    a {
+        text-decoration: none;
+        /* Remove default underline */
+        color: inherit;
+        /* Inherit text color from parent */
+        position: relative;
+        /* Needed for pseudo-elements */
+        display: inline-block;
+        /* Allows background color to cover entire text */
+        transition: all 0.3s ease;
+        /* Smooth transition for background color */
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+    }
+
+    a:hover {
+        text-decoration: underline;
+        /* Underline on hover */
+        color: rgb(99, 99, 94);
+        /* Highlight color hover */
+    }
+
+    .delete-btn:hover {
+        background-color: rgb(214, 91, 91);
+        transition: all ease 0.5s;
+    }
+
+    .delete-btn:active {
+        transform: scale(1.2);
+    }
+
+    .delete-btn img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
 }
