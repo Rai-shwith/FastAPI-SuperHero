@@ -212,7 +212,7 @@ a:hover {
     .herotxt {
         position: relative;
         margin-bottom: 80px;
-        left: -61px;
+        left: 0;
     }
 
     #like-box {
