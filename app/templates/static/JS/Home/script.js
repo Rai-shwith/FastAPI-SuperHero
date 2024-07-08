@@ -103,7 +103,6 @@ fetch("/posts/api", {
 // })
 document.getElementById('profile').addEventListener('click', ev => {
     if (!localStorage.userId) {
-        console.error(response.statusText)
         const message = document.getElementById('center');
         message.style.display = 'block';
         document.getElementById('page-body').classList.add('body-opacity');
