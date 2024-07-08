@@ -80,7 +80,7 @@ document.getElementById('signupForm').addEventListener('submit', function (event
                 message.style.display='block';
                 document.getElementById('page-body').classList.add('body-opacity');
                 setTimeout(() => {
-                    window.location.href ="
+                    window.location.href ="/heros"
                     setTimeout(() => {
                             document.getElementById('signupName').value=''
                             document.getElementById('signupEmail').value=''
@@ -89,7 +89,7 @@ document.getElementById('signupForm').addEventListener('submit', function (event
                         message.innerHTML='Invalid Email'
                         document.getElementById('page-body').classList.remove('body-opacity');
                         }, 1000);
-                        
+                    
                         
                 }, 1500);
                 
