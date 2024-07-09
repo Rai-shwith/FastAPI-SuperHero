@@ -141,7 +141,7 @@ a:hover {
 
 @media (width<=460px) {
     .main-box {
-        height: 40vh;
+        height: 90vw;
         width: 90vw;
     }
 
