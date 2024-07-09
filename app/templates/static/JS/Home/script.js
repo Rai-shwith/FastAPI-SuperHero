@@ -104,7 +104,7 @@ fetch("/posts/api", {
 document.getElementById('profile').addEventListener('click', ev => {
     if (!localStorage.userId) {
         const message = document.getElementById('center');
-        message.style.display = 'block';
+        message.style.display = 'flex';
         document.getElementById('page-body').classList.add('body-opacity');
         setTimeout(() => {
             window.location.href = "/login"
