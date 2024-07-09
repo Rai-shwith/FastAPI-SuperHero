@@ -63,6 +63,9 @@ fetch("/posts/api", {
     }
     document.getElementById('placeholder').innerHTML = topStr + boxStr;
     document.getElementsByTagName('nav')[0].style.display = 'block';
+    document.getElementById('wheel').style.animation='none'
+    document.getElementById('wheel').style.display='none'
+    document.getElementById('loading').style.display='none'
 })
 
 
@@ -104,7 +107,7 @@ fetch("/posts/api", {
 document.getElementById('profile').addEventListener('click', ev => {
     if (!localStorage.userId) {
         const message = document.getElementById('center');
-        message.style.display = 'flex';
+        message.style.display = 'f';
         document.getElementById('page-body').classList.add('body-opacity');
         setTimeout(() => {
             window.location.href = "/login"

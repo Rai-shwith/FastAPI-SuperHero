@@ -19,7 +19,36 @@ body {
   padding: 0;
   margin: 0;
 }
+#loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 999;
+  display: none;
+}
+#wheel {
+  /* display: inline-block; */
+  display: none;
+  width: 0;
+  height: 0;
+  border: 3px solid #ccc;
+  border-radius: 50%;
+  /* border-top-color: #333; */
+  /* animation: spin 1s cubic-bezier(1,0,0,1)  infinite alternate; */
+}
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
 
+  100% {
+      transform: rotate(360deg);
+      width: 100px;
+      height: 100px;
+  }
+}
 .welcometxt {
   color: white;
   font-size: 48px;

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    if (localStorage.token && localStorage.token!='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5ODM4OTc0MTgzNjcxMzk4NDEsImV4cCI6MTcyMTE5NjA4Mn0.Q8si-ntjlU6QiMw0Iks0fGv6wTf0C6KUd9eL2Mn6DME') {
+    if (localStorage.token && localStorage.token != 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5ODM4OTc0MTgzNjcxMzk4NDEsImV4cCI6MTcyMTE5NjA4Mn0.Q8si-ntjlU6QiMw0Iks0fGv6wTf0C6KUd9eL2Mn6DME') {
         const message = document.getElementById('center');
         message.innerHTML = 'Successfully Logged in'
         message.style.color = 'green'
@@ -21,6 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.getElementById('loginForm').addEventListener('submit', function (event) {
     event.preventDefault()
+    document.getElementById('wheel').style.display = 'inline-block';
+    document.getElementById('wheel').style.animation = 'spin 1s cubic-bezier(1,0,0,1)  infinite alternate';
+    document.getElementById('loading').style.display = 'block';
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
 
@@ -35,6 +38,9 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
         .then(response => {
             if (!response.ok) {
                 if (response.status == 403) {
+                    document.getElementById('wheel').style.display = 'none';
+                    document.getElementById('wheel').style.animation = 'none';
+                    document.getElementById('loading').style.display = 'none';
                     console.error(response.statusText)
                     const message = document.getElementById('center');
                     message.style.display = 'flex';
@@ -54,19 +60,22 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
         })
         .then(data => {
             localStorage.setItem('token', data.acess_token);
-            fetch('/users/id',{
+            fetch('/users/id', {
                 method: 'GET',
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('token')
                 }
-            }).then(response =>{
-                if (!response.ok){
+            }).then(response => {
+                if (!response.ok) {
                     throw new Error("Error while sending info: ", response.statusText)
                 }
                 return response.json();
-            }).then(data=>{
+            }).then(data => {
                 localStorage.setItem('userId', data.id);
-            }).catch(error=>console.error(error))
+            }).catch(error => console.error(error))
+            document.getElementById('wheel').style.display = 'none';
+            document.getElementById('wheel').style.animation = 'none';
+            document.getElementById('loading').style.display = 'none';
             const message = document.getElementById('center');
             message.innerHTML = 'Successfully Logged in'
             message.style.color = 'green'

@@ -76,6 +76,9 @@ fetch(`/users/posts/${localStorage.userId}`, {
     }
     document.getElementById('placeholder').innerHTML = topStr + boxStr;
     document.getElementsByTagName('nav')[0].style.display = 'block';
+    document.getElementById('wheel').style.animation='none'
+    document.getElementById('wheel').style.display='none'
+    document.getElementById('loading').style.display='none'
 })
 }
 
