@@ -184,7 +184,7 @@ a:hover {
   @media (width<=460px) {
 
     nav {
-        position: sticky;
+        /* position: sticky; */
         bottom: 0;
         height: 51px;
     }
