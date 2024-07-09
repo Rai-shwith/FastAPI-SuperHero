@@ -1,12 +1,12 @@
-body{
-    background-color:rgba(126, 166, 212, 0.78) ;
+body {
+    background-color: rgba(126, 166, 212, 0.78);
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.sticky-back{
+.sticky-back {
     position: fixed;
     top: 10px;
     left: 10px;
@@ -16,14 +16,14 @@ body{
     /* border-radius: 20px; */
     font-size: 30px;
     color: white;
-  }
+}
 
-nav{
+nav {
     position: sticky;
     bottom: 0;
 }
 
-.navitems{
+.navitems {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -34,7 +34,7 @@ nav{
     margin-bottom: 15px;
 }
 
-.navitems *{
+.navitems * {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,16 +45,17 @@ nav{
     font-size: 32px;
 }
 
-.item2{
-    background-color:rgba(149, 186, 228, 1) ;
+.item2 {
+    background-color: rgba(149, 186, 228, 1);
 }
+
 #like-box {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#like{
+#like {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,22 +65,22 @@ nav{
     right: 100px;
     bottom: 22px;
     cursor: pointer;
-    
+
 }
-#like:active{
+
+#like:active {
     transform: scale(1.2);
 }
 
 
-
-.herotxt{
+.herotxt {
     font-size: 48px;
     position: fixed;
     top: 40px;
     left: 15px;
 }
 
-.box{
+.box {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -87,10 +88,10 @@ nav{
     margin-top: 58px;
     box-sizing: border-box;
 
-    
+
 }
 
-.upper-box{
+.upper-box {
     height: 551px;
     width: 906px;
     border-radius: 35px;
@@ -98,40 +99,50 @@ nav{
     /* display: flex;
     justify-content: center;
     align-items: center; */
-    margin-top:114px; 
+    margin-top: 114px;
     flex-direction: column;
-    gap:106px ;
+    gap: 106px;
     margin-bottom: 144px;
     position: relative;
 }
 
-h1{
-    font-size:96px ;
+h1 {
+    font-size: 96px;
 }
 
-h3{
+h3 {
     font-size: 32px;
 }
 
-.created-box{
+.created-box {
     font-size: 32px;
-    display: flex;    
+    display: flex;
     margin-top: 55px;
 }
-.email-txt{
+
+.email-txt {
     margin-left: 5px;
 }
-*{
+
+* {
     padding: 0;
     margin: 0;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-.more-info{
-    font-size:16px ;
+.more-info {
+    font-size: 16px;
     width: 185px;
     height: 63px;
     border-radius: 35px;
-    background-color:rgba(152, 183, 220, 1);
+    background-color: rgba(152, 183, 220, 1);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -140,22 +151,29 @@ h3{
 }
 
 a {
-    text-decoration: none; /* Remove default underline */
-    color: inherit; /* Inherit text color from parent */
-    position: relative; /* Needed for pseudo-elements */
-    display: inline-block; /* Allows background color to cover entire text */
-    transition: all 0.3s ease; /* Smooth transition for background color */
+    text-decoration: none;
+    /* Remove default underline */
+    color: inherit;
+    /* Inherit text color from parent */
+    position: relative;
+    /* Needed for pseudo-elements */
+    display: inline-block;
+    /* Allows background color to cover entire text */
+    transition: all 0.3s ease;
+    /* Smooth transition for background color */
     cursor: pointer;
 
-  }
+}
 
-  /* Hover state */
+/* Hover state */
 a:hover {
-    text-decoration: underline; /* Underline on hover */
-    color: rgb(99, 99, 94); /* Highlight color hover */
-  }
+    text-decoration: underline;
+    /* Underline on hover */
+    color: rgb(99, 99, 94);
+    /* Highlight color hover */
+}
 
-  @media (width<=460px) {
+@media (width<=460px) {
 
     nav {
         position: sticky;
@@ -183,6 +201,7 @@ a:hover {
         border-radius: 15px;
         font-size: 0.5rem;
     }
+
     .item2 {
         background-color: rgba(149, 186, 228, 1);
     }
@@ -247,11 +266,13 @@ a:hover {
         user-select: none;
 
     }
-    #like img{
+
+    #like img {
         width: 40px;
         height: 35px;
     }
- .sticky-back{
-    display: none;
- }
+
+    .sticky-back {
+        display: none;
+    }
 }
