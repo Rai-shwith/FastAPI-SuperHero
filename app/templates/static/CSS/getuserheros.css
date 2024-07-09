@@ -21,6 +21,7 @@ body {
 nav {
     position: sticky;
     bottom: 0;
+    color: white;
 }
 
 .navitems {

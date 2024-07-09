@@ -29,6 +29,7 @@ body {
 nav {
     position: fixed;
     bottom: 0;
+    color: white;
 }
 
 .navitems {
