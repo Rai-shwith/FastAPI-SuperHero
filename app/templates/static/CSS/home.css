@@ -219,6 +219,16 @@ a:hover {
         border-radius: 15px;
         font-size: 0.5rem;
     }
+    .navitems *:active{
+        transition: all cubic-bezier(0,1,0,1) 0.5s;
+        background-color: rgb(104 158 223);
+        transform: scale(1.2);
+    }
+    .item1:active{
+        transition: none;
+        transform: none;
+        background-color: rgba(149, 186, 228, 1);
+    }
     .item1 {
         background-color: rgba(149, 186, 228, 1);
     }
@@ -255,6 +265,11 @@ a:hover {
         height: 4vh;
         margin-top: 35%;
 
+    }
+    .more-info:active{
+        transition: all cubic-bezier(0,1,0,1) 0.5s;
+        background-color: rgb(104 158 223);
+        transform: scale(1.2);
     }
 
     .herotxt {

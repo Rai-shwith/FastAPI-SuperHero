@@ -1,24 +1,24 @@
-*{
-    padding: 0;
-    margin: 0;
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-#page-body{
-    background-color: rgba(126, 166, 212, 0.78);
-    color: white;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    width: 100vw;
+#page-body {
+  background-color: rgba(126, 166, 212, 0.78);
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
 }
 
 .main-box {
@@ -35,155 +35,184 @@
 }
 
 a {
-    text-decoration: none; /* Remove default underline */
-    color: inherit; /* Inherit text color from parent */
-    display: inline-block; /* Allows background color to cover entire text */
-    transition: all 0.3s ease; /* Smooth transition for background color */
-    cursor: pointer;
+  text-decoration: none;
+  /* Remove default underline */
+  color: inherit;
+  /* Inherit text color from parent */
+  display: inline-block;
+  /* Allows background color to cover entire text */
+  transition: all 0.3s ease;
+  /* Smooth transition for background color */
+  cursor: pointer;
 }
 
-  /* Hover state */
+/* Hover state */
 a:hover {
-    text-decoration: underline; /* Underline on hover */
-    color: rgb(99, 99, 94); /* Highlight color hover */
-  }
-
-  input{
-    font-size: 32px;
-    width: 626px;
-    height: 87px;
-    border-radius: 35px;
-    background-color: rgba(152, 183, 220, 1);
-    text-indent: 89px;
-    border: none;
-    /* border: 1px solid white; */
-
-  }
-
-input:focus{
-    /* border: none; */
-    outline: 1px solid black;
+  text-decoration: underline;
+  /* Underline on hover */
+  color: rgb(99, 99, 94);
+  /* Highlight color hover */
 }
 
-  input::placeholder{
-    font-size: 32px;
-    color: rgba(255, 255, 255, 0.25);
-    text-indent: 89px;
+input {
+  font-size: 32px;
+  width: 626px;
+  height: 87px;
+  border-radius: 35px;
+  background-color: rgba(152, 183, 220, 1);
+  text-indent: 89px;
+  border: none;
+  /* border: 1px solid white; */
+
+}
+
+input:focus {
+  /* border: none; */
+  outline: 1px solid black;
+}
+
+input::placeholder {
+  font-size: 32px;
+  color: rgba(255, 255, 255, 0.25);
+  text-indent: 89px;
+}
+
+h1 {
+  font-size: 96px;
+  position: absolute;
+  top: 70px;
+}
+
+.inputForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 72px;
+  position: absolute;
+  top: 220px;
+}
+
+.btn {
+  font-size: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 297px;
+  height: 77px;
+  color: white;
+  border-radius: 35px;
+  background-color: rgba(152, 183, 220, 1);
+  transition: all 0.3s ease;
+  /* Smooth transition for background color */
+
+}
+
+.btn:hover {
+  color: rgb(99, 99, 94);
+}
+
+.back-btn {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  padding: 10px;
+  /* border: solid grey 2px; */
+  /* border-radius: 20px; */
+  font-size: 30px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: #f0f0f0; */
+  font-size: 90px;
+  padding: 20px;
+  /* border: 1px solid #ccc; */
+  text-align: center;
+  z-index: 1000;
+  /* Ensure it's above other content */
+  background-color: rgba(126, 166, 212, 1);
+  width: 600px;
+  border-radius: 35px;
+  color: white;
+
+}
+
+.body-opacity {
+  opacity: 0.2;
+  transition: opacity 0.5s ease;
+}
+
+@media (width<=460px) {
+  .main-box {
+    width: 90vw;
+    height: 40vh;
+    margin-top: 13vh;
   }
 
-  h1{
-    font-size: 96px;
-    position: absolute;
-    top: 70px;
+  input {
+    font-size: 1rem;
+    width: 73vw;
+    height: 3.5vh;
+    border-radius: 15px;
+    top: 18vh;
+    text-indent: 30px;
   }
 
-  .inputForm{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 72px;
-    position: absolute;
-    top: 220px;
-  }
-
-  .btn{
-    font-size: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 297px;
-    height: 77px;
-    color: white;
-    border-radius: 35px;
-    background-color: rgba(152, 183, 220, 1);
-    transition: all 0.3s ease; /* Smooth transition for background color */
-
-  }
-
-  .btn:hover{
-    color:  rgb(99, 99, 94);
-  }
-  
-  .back-btn{
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 10;
-    padding: 10px;
-    /* border: solid grey 2px; */
-    /* border-radius: 20px; */
-    font-size: 30px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #center{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* background-color: #f0f0f0; */
-    font-size: 90px;
-    padding: 20px;
-    /* border: 1px solid #ccc; */
-    text-align: center;
-    z-index: 1000; /* Ensure it's above other content */
-    background-color:rgba(126, 166, 212, 1) ;
-    width: 600px;
-    border-radius: 35px;
-    color: white;
-
-  }
-
-  .body-opacity{
-    opacity: 0.2;
-    transition: opacity 0.5s ease;
-  }
-
-  @media (width<=460px) {
-    .main-box{
-      width: 90vw;
-      height: 40vh;
-      margin-top: 13vh;
-    }
-    input {
-      font-size: 1rem;
-      width: 73vw;
-      height: 3.5vh;
-      border-radius: 15px;
-      top: 18vh;
-      text-indent: 30px;
-  }
-  h1{
+  h1 {
     font-size: 2rem;
   }
+
   .inputForm {
     gap: 12px;
     font-size: 1rem;
     top: 21vh;
-} 
-.btn {
-  font-size: 0.7rem;
-  width: 21vw;
-  height: 3vh;
-  border-radius: 15px;
-  margin-top: 3vh;
-}
-input::placeholder{
-  font-size: 1rem;
-  text-indent: 30px;
-}
- .back-btn{
-  font-size: 1rem;
- }
- #center{
-  width: 80vw;
-  height: 20vh;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-}
+  }
+
+  .btn {
+    font-size: 0.7rem;
+    width: 21vw;
+    height: 3vh;
+    border-radius: 15px;
+    margin-top: 3vh;
+  }
+
+  .btn:active {
+    transition: all cubic-bezier(0, 1, 0, 1) 0.5s;
+    background-color: rgb(104 158 223);
+    transform: scale(1.2);
+  }
+
+  input::placeholder {
+    font-size: 1rem;
+    text-indent: 30px;
+  }
+
+  .back-btn {
+    font-size: 1rem;
+    border-radius: 12px;
+    background-color: #527298;
+    height: 1.5vh;
+  }
+  .back-btn:active{
+    transition: all cubic-bezier(0, 1, 0, 1) 0.5s;
+    background-color: rgb(104 158 223);
+    transform: scale(1.2);
+  }
+
+  #center {
+    width: 80vw;
+    height: 20vh;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+  }
 }
