@@ -61,7 +61,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 11px;
+    gap: 4px;
     background-color: rgba(94, 133, 180, 0.74);
     border-radius: 35px;
     width: 562px;

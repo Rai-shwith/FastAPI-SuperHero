@@ -41,7 +41,7 @@ document.getElementById('profile').addEventListener('click', ev => {
             if (response.status == 401) {
                 console.error(response.statusText)
                 const message = document.getElementById('center');
-                message.style.display = 'block';
+                message.style.display = 'flex';
                 document.getElementById('page-body').classList.add('body-opacity');
                 setTimeout(() => {
                     window.location.href = "/login"

@@ -194,9 +194,9 @@ a:hover {
 @media (width<=460px) {
 
     nav {
-        position: sticky;
+        position: fixed;
         bottom: 0;
-        height: auto;
+        height: 51px;
     }
 
     .navitems {
@@ -301,5 +301,11 @@ a:hover {
         width: 40px;
         height: 35px;
     }
-
+    #center{
+        width: 80vw;
+        height: 20vh;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+      }
 }
