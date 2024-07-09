@@ -187,6 +187,7 @@ a:hover {
         /* position: sticky; */
         bottom: 0;
         height: 51px;
+        z-index: 999;
     }
 
     .navitems {

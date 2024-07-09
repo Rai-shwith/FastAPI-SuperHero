@@ -45,6 +45,7 @@ nav {
     position: sticky;
     bottom: 0;
     color: white;
+    z-index: 999;
 }
 
 .navitems {
