@@ -1,5 +1,8 @@
 document.getElementById('inputForm').addEventListener('submit', function (event) {
     event.preventDefault();
+    document.getElementById('wheel').style.display = 'inline-block';
+    document.getElementById('wheel').style.animation = 'spin 1s cubic-bezier(1,0,0,1)  infinite alternate';
+    document.getElementById('loading').style.display = 'block';
     const alias = document.getElementById('heroName').value;
     const name = document.getElementById('personName').value;
     const data = {
@@ -21,6 +24,9 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
             console.error(response.statusText)
             if (response.status == 401) {
                 console.error(response.statusText)
+                document.getElementById('wheel').style.display = 'none';
+                document.getElementById('wheel').style.animation = 'none';
+                document.getElementById('loading').style.display = 'none';
                 const message = document.getElementById('center');
                 message.style.display = 'flex';
                 document.getElementById('page-body').classList.add('body-opacity');
@@ -43,7 +49,9 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
         }
     }).then(data => {
         if (!(data == undefined)) {
-
+            document.getElementById('wheel').style.display = 'none';
+            document.getElementById('wheel').style.animation = 'none';
+            document.getElementById('loading').style.display = 'none';
             const message = document.getElementById('center');
             message.innerHTML = `${data.alias} is Succesfully Added`
             message.style.color = 'green'
