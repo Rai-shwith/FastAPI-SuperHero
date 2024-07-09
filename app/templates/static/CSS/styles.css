@@ -111,8 +111,8 @@ a:hover {
 .sticky-back {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  position: fixed;
+  gap: 6px;
+  position: absolute;
   top: 10px;
   left: 10px;
   z-index: 10;
@@ -177,6 +177,11 @@ a:hover {
     border-radius: 13px;
     font-size: 0.7rem;
   }
+  .loginbtn:active{
+        transition: all cubic-bezier(0,1,0,1) 0.5s;
+        background-color: rgb(104 158 223);
+        transform: scale(1.2);
+  }
 
   .sticky-back {
     font-size: 1rem;
@@ -203,5 +208,19 @@ a:hover {
   }
   .welcometxt{
     font-size: 2rem;
+  }
+  .sticky-back a {
+    font-size: 1rem;
+    border-radius: 12px;
+    background-color: #527298;
+    height: 4.5vh;
+    width: 17vw;
+    display: grid;
+    place-items: center;
+  }
+  .sticky-back *:active{
+    transition: all cubic-bezier(0, 1, 0, 1) 0.5s;
+    background-color: rgb(104 158 223);
+    transform: scale(1.2);
   }
 }
