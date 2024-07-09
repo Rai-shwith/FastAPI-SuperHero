@@ -309,11 +309,13 @@ a:hover {
     }
 
     .delete-btn:hover {
-        background-color: rgb(214, 91, 91);
-        transition: all ease 0.5s;
+        background-color: transparent;
+        transition: none;
     }
-
+    
     .delete-btn:active {
+        transition: all cubic-bezier(0,1,0,1) 0.5s;
+        background-color: rgb(214, 91, 91);
         transform: scale(1.2);
     }
 
