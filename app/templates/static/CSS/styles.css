@@ -201,10 +201,15 @@ a:hover {
   }
 
   .btns {
-    width: 80vw;
-    height: 4vh;
+    width: 60vw;
+    height: 5vh;
     font-size: 1rem;
     border-radius: 15px;
+  }
+  .btns:active{
+    transition: all cubic-bezier(0, 1, 0, 1) 0.5s;
+    background-color: rgb(104 158 223);
+    transform: scale(1.2);
   }
   .welcometxt{
     font-size: 2rem;
