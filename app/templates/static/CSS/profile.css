@@ -230,6 +230,17 @@ a:hover {
         font-size: 0.5rem;
     }
 
+    .navitems *:active {
+        transition: all cubic-bezier(0, 1, 0, 1) 0.5s;
+        background-color: rgb(104 158 223);
+        transform: scale(1.2);
+    }
+
+    .item5:active {
+        transition: none;
+        transform: none;
+        background-color: rgba(149, 186, 228, 1);
+    }
 
     .upper-box {
         height: 40vh;
@@ -262,7 +273,11 @@ a:hover {
         width: 25vw;
         height: 4vh;
         margin-top: 7%;
-
+    }
+    .more-info:active{
+        transition: all cubic-bezier(0,1,0,1) 0.5s;
+        background-color: rgb(104 158 223);
+        transform: scale(1.2);
     }
 
     .delete-btn {
@@ -275,6 +290,11 @@ a:hover {
         font-size: 1.5rem;
         width: 117px;
         height: 40px;
+    }
+    .logoutbtn:active{
+        transition: all cubic-bezier(0,1,0,1) 0.5s;
+        background-color: rgb(104 158 223);
+        transform: scale(1.2);
     }
 
     .item5 {
@@ -312,9 +332,9 @@ a:hover {
         background-color: transparent;
         transition: none;
     }
-    
+
     .delete-btn:active {
-        transition: all cubic-bezier(0,1,0,1) 0.5s;
+        transition: all cubic-bezier(0, 1, 0, 1) 0.5s;
         background-color: rgb(214, 91, 91);
         transform: scale(1.2);
     }
