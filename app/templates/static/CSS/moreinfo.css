@@ -188,4 +188,7 @@ a:hover {
     .like-count{
         font-size: 0.5rem;
     }
+    a:hover {
+        text-decoration: none
+      }
 }

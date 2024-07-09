@@ -228,4 +228,8 @@ a:hover {
     background-color: rgb(104 158 223);
     transform: scale(1.2);
   }
+  
+  a:hover {
+    text-decoration: none
+  }
 }

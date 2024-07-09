@@ -246,5 +246,7 @@ a:hover {
         width: 40px;
         height: 35px;
     }
-
+    a:hover {
+        text-decoration: none
+      }
 }

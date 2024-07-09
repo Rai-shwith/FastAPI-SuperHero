@@ -308,4 +308,7 @@ a:hover {
         align-items: center;
         font-size: 2rem;
       }
+      a:hover {
+        text-decoration: none
+      }
 }
