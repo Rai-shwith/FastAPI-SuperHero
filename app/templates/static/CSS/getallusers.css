@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    padding-bottom: 51px;
 }
 
 #loading {
@@ -39,6 +40,7 @@ nav{
     position: fixed;
     bottom: 0;
     color: white;
+    z-index: 999;
 }
 
 .navitems{
