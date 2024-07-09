@@ -42,7 +42,7 @@
 }
 
 nav {
-    position: fixed;
+    position: sticky;
     bottom: 0;
     color: white;
 }
@@ -224,7 +224,7 @@ a:hover {
 @media (width<=460px) {
 
     nav {
-        position: fixed;
+        position: sticky;
         bottom: 0;
         height: 51px;
     }
