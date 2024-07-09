@@ -30,7 +30,6 @@ fetch(`/users/posts/${localStorage.userId}`, {
     }
     return response.json()
 }).then(data => {
-    console.log(data)
     topStr = `<div class="sticky-back"><a href="javascript:history.back()">Back</a> </div>`
     boxStr = ""
     if (data.length) {
@@ -73,6 +72,8 @@ fetch(`/users/posts/${localStorage.userId}`, {
                 <h1>No Hero</h1>
             </div>
         </div>`
+    }
+    if(data.length<3){
         document.getElementsByTagName('nav')[0].style.position='absolute';
     }
     document.getElementById('placeholder').innerHTML = topStr + boxStr;
@@ -114,7 +115,7 @@ function toggleHeart(id, postId) {
 }
 
 window.addEventListener('beforeunload', () => {
-
+ setTimeout(() => {
     unLikedList.forEach(element => {
         data = {
             "post_id": element,
@@ -134,7 +135,9 @@ window.addEventListener('beforeunload', () => {
 
         }).catch(error => { console.error(error) });
     })
-
+ }, 0);
+    
+setTimeout(() => {
     likedList.forEach(element => {
         data = {
             "post_id": element,
@@ -154,6 +157,8 @@ window.addEventListener('beforeunload', () => {
 
         }).catch(error => { console.error(error) });
     })
+}, 0);
+    
 })
 
 document.getElementById('profile').addEventListener('click', ev => {
@@ -175,9 +180,3 @@ document.getElementById('profile').addEventListener('click', ev => {
         window.location.href = `/users/${localStorage.userId}`;
     }
 })
-
-
-
-
-
-

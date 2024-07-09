@@ -60,6 +60,8 @@ fetch("/posts/api", {
                 <h1>No Hero</h1>
             </div>
         </div>`
+    }
+    if(data.length<3){
         document.getElementsByTagName('nav')[0].style.position='absolute';
     }
     document.getElementById('placeholder').innerHTML = topStr + boxStr;
@@ -82,7 +84,7 @@ fetch("/posts/api", {
 //     }).then(response => {
 //         if (!response.ok) {
 //             if (response.status == 401) {
-//                 console.error(response.statusText)
+//                
 //                 const message = document.getElementById('center');
 //                 message.style.display = 'block';
 //                 document.getElementById('page-body').classList.add('body-opacity');
@@ -129,6 +131,7 @@ function toggleHeart(id, postId) {
     const src = 'like-img' + id
     const img = document.getElementById(src);
     if (localStorage.token && localStorage.token == dummyToken) {
+    
         console.error("You are not logged in")
     }
     else if (img.src.endsWith('blankheart.png')) {
@@ -156,7 +159,7 @@ function toggleHeart(id, postId) {
 }
 
 window.addEventListener('beforeunload', () => {
-
+setTimeout(() => {
     unLikedList.forEach(element => {
         data = {
             "post_id": element,
@@ -174,9 +177,12 @@ window.addEventListener('beforeunload', () => {
                 throw new Error(response.statusText)
             }
 
-        }).catch(error => { console.error(error) });
+        }).catch(error => {
+            console.error(error) });
     })
 
+}, 0);
+setTimeout(() => {
     likedList.forEach(element => {
         data = {
             "post_id": element,
@@ -194,8 +200,11 @@ window.addEventListener('beforeunload', () => {
                 throw new Error(response.statusText)
             }
 
-        }).catch(error => { console.error(error) });
-    })
+        }).catch(error => {
+            console.error(error) });
+    }) 
+}, 0);
+
 })
 
 
