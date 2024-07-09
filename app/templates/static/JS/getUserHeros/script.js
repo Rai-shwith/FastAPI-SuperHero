@@ -52,6 +52,7 @@ fetch(`/users/posts/${localStorage.userId}`, {
                 <a href="/posts/${data[hero_index]["Post"]["id"]}">
                     <div class="more-info">More info</div>
                 </a>
+                <div class="delete-btn"  onclick="deleteHero('${data[hero_index]["Post"]["id"]}')"><img draggable="false" src="../../static/images/material-symbols_delete.png" alt="delete icon" srcset=""></div>
 
             </div>
             
@@ -180,3 +181,19 @@ document.getElementById('profile').addEventListener('click', ev => {
         window.location.href = `/users/${localStorage.userId}`;
     }
 })
+function deleteHero(heroId) {
+    setTimeout(() => {
+        if (confirm('Are you sure you want to delete?')){
+            fetch(`/posts/${heroId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.token}`
+                }
+            }).then(response => {
+                if (response.status == 204) {
+                    console.log("Heo Deleted")
+                    window.location.href = "/users-heros"
+                    }})
+        }
+    }, 300);
+}
