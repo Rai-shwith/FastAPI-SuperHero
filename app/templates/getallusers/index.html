@@ -11,6 +11,24 @@
 <body>
     <div style="display: none;" id="center">You are not logged in</div>
 <div id="page-body">
+    <nav>
+        <div class="navitems">
+            <a href="/heros">
+                <div class="item1">All Heros</div>
+            </a>
+            <a href="/users-heros" >
+                <div id="myHeros" class="item2">My Heros</div>
+            </a>
+            <a href="/addhero">
+                <div class="item3">Add Hero</div>
+            </a>
+        
+                <div class="item4">All Users</div>
+            <a id="profile">
+                <div class="item5">Profile</div>
+            </a>
+        </div>
+    </nav>
     <div class="herotxt">All Users</div>
 
     {%if users%}
@@ -31,30 +49,16 @@
     </div>
     {% endfor %}
     {% else %}
+    <script>
+        document.getElementsByTagName('nav')[0].style.position='absolute';
+    </script>
     <div class="upper-box">
         <div class="box">
             <h1>No Users</h1>
         </div>
     </div>
     {% endif %}
-    <nav>
-        <div class="navitems">
-            <a href="/heros">
-                <div class="item1">All Heros</div>
-            </a>
-            <a href="/users-heros" >
-                <div id="myHeros" class="item2">My Heros</div>
-            </a>
-            <a href="/addhero">
-                <div class="item3">Add Hero</div>
-            </a>
-        
-                <div class="item4">All Users</div>
-            <a id="profile">
-                <div class="item5">Profile</div>
-            </a>
-        </div>
-    </nav>
+
     </div>
     <script src="/static/JS/simple/script.js"></script>
 </body>

@@ -73,6 +73,7 @@ fetch(`/users/posts/${localStorage.userId}`, {
                 <h1>No Hero</h1>
             </div>
         </div>`
+        document.getElementsByTagName('nav')[0].style.position='absolute';
     }
     document.getElementById('placeholder').innerHTML = topStr + boxStr;
     document.getElementsByTagName('nav')[0].style.display = 'block';
@@ -157,9 +158,8 @@ window.addEventListener('beforeunload', () => {
 
 document.getElementById('profile').addEventListener('click', ev => {
     if (!localStorage.userId) {
-        console.error(response.statusText)
         const message = document.getElementById('center');
-        message.style.display = 'block';
+        message.style.display = 'flex';
         document.getElementById('page-body').classList.add('body-opacity');
         setTimeout(() => {
             window.location.href = "/login"
@@ -175,7 +175,6 @@ document.getElementById('profile').addEventListener('click', ev => {
         window.location.href = `/users/${localStorage.userId}`;
     }
 })
-
 
 
 
