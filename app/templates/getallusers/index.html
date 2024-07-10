@@ -17,7 +17,7 @@
             <a href="/heros">
                 <div class="item1">All Heros</div>
             </a>
-            <a href="/users-heros" >
+            <a id="myHeros">
                 <div id="myHeros" class="item2">My Heros</div>
             </a>
             <a href="/addhero">
@@ -44,7 +44,7 @@
                 <div class="crtby">Joined : </div>
                 <div >{{user["created_at"].strftime("%b %d %Y")}}</div>
             </div>
-            <a href="/users-heros">
+            <a href="/users/posts/{{user["id"]}}">
                 <div class="more-info">View Heros</div>
             </a>
             

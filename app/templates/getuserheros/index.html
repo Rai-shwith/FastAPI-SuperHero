@@ -12,8 +12,8 @@
     <div id="loading"><div id="wheel"></div></div>
     <div style="display: none;" id="center">You are not logged in</div>
     <div id="page-body">
-    <div id="placeholder">
-<!-- <div class="sticky-back"><a href="javascript:history.back()">Back</a> </div>
+    <!-- <div id="placeholder"> -->
+<div class="sticky-back"><a href="javascript:history.back()">Back</a> </div>
     
 
     {%if hero_pack%}
@@ -31,11 +31,16 @@
             </a>
             
         </div>
-        <div id="like-box" onclick="toggleHeart({{hero_index}})">
+        <div id="like-box" onclick="toggleHeart('{{hero["Post"]["id"]}}',)">
                 <div id="like">
-                    <img id="like-img{{hero_index}}" style="position: absolute;" src="../static\images\blankheart.png" alt=""
+                    {%if (hero["is_liked"])%}
+                    <img id="like-img{{hero["Post"]["id"]}}" style="position: absolute;" src="../../static\images\filledheart.png" alt=""
                         srcset="">
-                    <span style="position: absolute; z-index: 1;">{{hero_pack[hero_index]["likes"]}}</span>
+                        {%else%} 
+                        <img id="like-img{{hero["Post"]["id"]}}" style="position: absolute;" src="../../static\images\blankheart.png" alt=""
+                            srcset="">
+                            {% endif %}
+                    <span id="likeCount{{hero["Post"]["id"]}}" style="position: absolute; z-index: 1;">{{hero["likes"]}}</span>
                 </div>
         </div>
     </div>
@@ -46,10 +51,10 @@
             <h1>No Hero</h1>
         </div>
     </div>
-    {% endif %}  -->
+    {% endif %} 
+<!-- </div> -->
 </div>
-</div>
-<nav style="display:none">
+<nav >
         <div class="navitems">
             <a href="/heros">
                 <div class="item1">All Heros</div>
@@ -69,6 +74,10 @@
         </div>
     </nav>
     <script>
+        if ({{heros_length}}<3){
+            
+            document.getElementsByTagName('nav')[0].style.position='absolute';
+        }
         window.addEventListener('beforeunload', () => {
             document.getElementById('wheel').style.display = 'inline-block';
             document.getElementById('wheel').style.animation = 'spin 1s cubic-bezier(1,0,0,1)  infinite alternate';
