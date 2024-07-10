@@ -66,6 +66,7 @@ class TokenData(BaseModel):
 
 class ReturnUserId(BaseModel):
     id : str
+    user_name : str
     
 class Vote(BaseModel):
     post_id : int 

@@ -65,7 +65,7 @@ def get_user_id(current_user = Depends(oauth2.get_current_user)):
     user = current_user
     if user is None :
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,detail="You are not logged in")
-    return {"id": str(user.id)}
+    return {"id": str(user.id),"user_name":user.user_name}
 
 @router.get("/{id}",response_model=schemas.RespondToEntryOfUser)
 def get_user(request:Request,id : int , db : session = Depends(get_db)):
