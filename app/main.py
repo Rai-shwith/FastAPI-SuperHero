@@ -1,5 +1,6 @@
 import os
 from fastapi import FastAPI,Request
+from fastapi.responses import FileResponse
 from fastapi.templating import Jinja2Templates
 from .database import engine
 from . import models
@@ -49,6 +50,10 @@ app.add_middleware(
 def root(request : Request):
     return templates.TemplateResponse("index.html",{"request":request})
     return {"message":"hello world"}
+
+@app.get("/favicon.ico")
+def set_fevicon():
+    return FileResponse("app/templates/static/images/favicon.ico",media_type="image/x-icon")
 
 app.include_router(post.router)
 app.include_router(user.router)
