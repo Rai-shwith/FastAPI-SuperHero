@@ -9,20 +9,35 @@
 </head>
 
 <body>
-    <div id="page-body">
-    <div class="big-container">
-        <div class="welcometxt">Welcome to Super Hero Team</div>
-        <a href="/login">
-            <div class="btns" id="login">Log in</div>
-        </a>
-        <a href="/signup">
-            <div class="btns">Sign up</div>
-        </a>
-        <a href="/heros">
-            <div class="btns" onclick="localStorage.clear()">Continue as Guest</div>
-        </a>
+    <div id="loading">
+        <div id="wheel"></div>
     </div>
-</div>
+    <div id="page-body">
+        <div class="big-container">
+            <div class="welcometxt">Welcome to Super Hero Team</div>
+            <a href="/login">
+                <div class="btns" id="login">Log in</div>
+            </a>
+            <a href="/signup">
+                <div class="btns">Sign up</div>
+            </a>
+            <a href="/heros">
+                <div class="btns" onclick="localStorage.clear()">Continue as Guest</div>
+            </a>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('beforeunload', () => {
+            document.getElementById('wheel').style.display = 'inline-block';
+            document.getElementById('wheel').style.animation = 'spin 1s cubic-bezier(1,0,0,1)  infinite alternate';
+            document.getElementById('loading').style.display = 'block';
+        })
+        window.addEventListener('pagehide', () => {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('wheel').style.display = 'none';
+            document.getElementById('wheel').style.animation = 'none';
+        })
+    </script>
 </body>
 
 </html>

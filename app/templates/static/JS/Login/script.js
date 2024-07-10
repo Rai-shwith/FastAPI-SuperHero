@@ -73,9 +73,9 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
             }).then(data => {
                 localStorage.setItem('userId', data.id);
             }).catch(error => console.error(error))
-            document.getElementById('wheel').style.display = 'none';
-            document.getElementById('wheel').style.animation = 'none';
-            document.getElementById('loading').style.display = 'none';
+            // document.getElementById('wheel').style.display = 'none';
+            // document.getElementById('wheel').style.animation = 'none';
+            // document.getElementById('loading').style.display = 'none';
             const message = document.getElementById('center');
             message.innerHTML = 'Successfully Logged in'
             message.style.color = 'green'
