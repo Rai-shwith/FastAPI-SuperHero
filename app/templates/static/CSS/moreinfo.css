@@ -7,6 +7,38 @@ body {
     flex-direction: column;
 }
 
+#loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 999;
+    display: none;
+}
+#wheel {
+    display: none;
+    width: 0;
+    height: 0;
+    border: 3px solid #ccc;
+    border-radius: 50%;
+    /* border-top-color: #333; */
+    /* animation: spin 1s cubic-bezier(1,0,0,1)  infinite alternate; */
+    animation: none;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+        width: 100px;
+        height: 100px;
+    }
+}
+
+
 .main-box {
     background-color: rgba(82, 114, 152, 1);
     width: 906px;
