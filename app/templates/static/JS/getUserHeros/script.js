@@ -134,51 +134,53 @@ function toggleHeart(postId) {
 }
 
 window.addEventListener('beforeunload', () => {
- setTimeout(() => {
-    unLikedList.forEach(element => {
-        data = {
-            "post_id": element,
-            "direction": 0
-        }
-        fetch('/vote', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.token}`
-            },
-            body: JSON.stringify(data)
-        }).then(response => {
-            if (!response.ok) {
-                throw new Error(response.statusText)
+    setTimeout(() => {
+        unLikedList.forEach(element => {
+            data = {
+                "post_id": element,
+                "direction": 0
             }
-
-        }).catch(error => { console.error(error) });
-    })
- }, 0);
+            fetch('/vote', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.token}`
+                },
+                body: JSON.stringify(data)
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error(response.statusText)
+                }
     
-setTimeout(() => {
-    likedList.forEach(element => {
-        data = {
-            "post_id": element,
-            "direction": 1
-        }
-        fetch('/vote', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.token}`
-            },
-            body: JSON.stringify(data)
-        }).then(response => {
-            if (!response.ok) {
-                throw new Error(response.statusText)
+            }).catch(error => {
+                console.error(error) });
+        })
+    
+    }, 0);
+    setTimeout(() => {
+        likedList.forEach(element => {
+            data = {
+                "post_id": element,
+                "direction": 1
             }
-
-        }).catch(error => { console.error(error) });
-    })
-}, 0);
+            fetch('/vote', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.token}`
+                },
+                body: JSON.stringify(data)
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error(response.statusText)
+                }
     
-})
+            }).catch(error => {
+                console.error(error) });
+        }) 
+    }, 0);
+    
+    })
 
 document.getElementById('profile').addEventListener('click', ev => {
     if (!localStorage.userId) {
