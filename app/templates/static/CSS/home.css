@@ -14,6 +14,7 @@
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 999;
+    display: none;
 }
 #wheel {
     display: inline-block;
@@ -22,7 +23,8 @@
     border: 3px solid #ccc;
     border-radius: 50%;
     /* border-top-color: #333; */
-    animation: spin 1s cubic-bezier(1,0,0,1)  infinite alternate;
+    /* animation: spin 1s cubic-bezier(1,0,0,1)  infinite alternate; */
+    animation: none;
 }
 @keyframes spin {
     0% {

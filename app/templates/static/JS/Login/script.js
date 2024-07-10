@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         message.style.display = 'block';
         document.getElementById('page-body').classList.add('body-opacity');
         setTimeout(() => {
-            window.location.href = "/heros"
+            window.location.href = "/posts"
             setTimeout(() => {
                 message.style.display = 'none';
                 message.innerHTML = 'Invalid Credentials'
@@ -85,7 +85,7 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
             setTimeout(() => {
                 document.getElementById('loginEmail').value = '';
                 document.getElementById('loginPassword').value = '';
-                window.location.href = "/heros"
+                window.location.href = "/posts"
                 setTimeout(() => {
                     message.style.display = 'none';
                     message.innerHTML = 'Invalid Credentials'

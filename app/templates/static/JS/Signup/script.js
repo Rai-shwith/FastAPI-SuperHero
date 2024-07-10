@@ -93,7 +93,7 @@ document.getElementById('signupForm').addEventListener('submit', function (event
             message.style.display = 'flex';
             document.getElementById('page-body').classList.add('body-opacity');
             setTimeout(() => {
-                window.location.href = "/heros"
+                window.location.href = "/posts"
                 setTimeout(() => {
                     document.getElementById('signupName').value = ''
                     document.getElementById('signupEmail').value = ''

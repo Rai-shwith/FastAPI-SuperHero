@@ -11,50 +11,49 @@
 
 <body>
     <div id="loading"><div id="wheel"></div></div>
-    <div id="placeholder">
+    <!-- <div id="placeholder"> -->
 
-<!--         
+        
     <div style="display: none;" id="center">You are not logged in</div>
     <div id="page-body">
         <div class="herotxt">Super Heros</div>
 
         {%if hero_pack%}
-        {% for hero_index in range(length) %}
-        <div class="upper-box">
-            <div class="box">
-                <h1>{{hero_pack[hero_index]["Post"]["alias"]}}</h1>
-                <h3>{{hero_pack[hero_index]["Post"]["name"]}}</h3>
-                <div class="created-box">
-                    <div class="crtby">Created by : </div>
-                    <div class="email-txt">{{hero_pack[hero_index]["Post"]["owner"]["user_name"]}}</div>
-                </div>
-                <a href="/posts/{{hero_pack[hero_index]["Post"]["id"]}}">
-                    <div class="more-info">More info</div>
-                </a>
-
+    {% for hero in hero_pack %}
+    <div class="upper-box">
+        <div class="box">
+            <h1>{{hero["Post"]["alias"]}}</h1>
+            <h3>{{hero["Post"]["name"]}}</h3>
+            <div class="created-box">
+                <div class="crtby">Created by : </div>
+                <div class="email-txt">{{hero["Post"]["owner"]["user_name"]}}</div>
             </div>
-            <div id="like-box" onclick="toggleHeart({{hero_index}})">
-                <div id="like">
-                    <img id="like-img{{hero_index}}" style="position: absolute;" src="../static\images\blankheart.png" alt=""
-                        srcset="">
-                    <span style="position: absolute; z-index: 1;">{{hero_pack[hero_index]["likes"]}}</span>
-                </div>
+            <a href="/posts/{{hero["Post"]["id"]}}">
+                <div class="more-info">More info</div>
+            </a>
             
-            </div>
         </div>
-        {% endfor %}
-        {% else %}
-        <div class="upper-box">
-            <div class="box">
-                <h1>No Hero</h1>
-            </div>
+        <div id="like-box" onclick="toggleHeart('{{hero["Post"]["id"]}}',)">
+                <div id="like" class="like">
+                    <img id="{{hero["Post"]["id"]}}" style="position: absolute;" src="../../static\images\blankheart.png" alt=""
+                        srcset="">
+                    <span id="likeCount{{hero["Post"]["id"]}}" style="position: absolute; z-index: 1;">{{hero["likes"]}}</span>
+                </div>
         </div>
-        {% endif %}
- -->
-
-
     </div>
-        <nav style="display:none">
+    {% endfor %}
+    {% else %}
+    <div class="upper-box">
+        <div class="box">
+            <h1>No Hero</h1>
+        </div>
+    </div>
+    {% endif %}
+
+
+
+    <!-- </div> -->
+        <nav >
             <div class="navitems">
 
                 <div class="item1">All Heros</div>

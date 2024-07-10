@@ -102,4 +102,4 @@ def get_users_heros(request:Request,id:int,db :session = Depends(get_db)):
 @router.get("/voted/{id}")
 def get_liked_heroes(id:int,db:session = Depends(get_db)):
     user_liked_heroes = db.query(models.Vote).filter(models.Vote.user_id==id).all()
-    return [_.post_id  for  _ in user_liked_heroes ]
+    return [str(_.post_id)  for  _ in user_liked_heroes ]

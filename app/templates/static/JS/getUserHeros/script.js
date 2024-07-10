@@ -1,6 +1,27 @@
-document.body.style.backgroundColor="rgba(126, 166, 212, 0.78)";
+// document.body.style.backgroundColor="rgba(126, 166, 212, 0.78)";
 const likedList = []
 const unLikedList = []
+let path=window.location.href.split('/')
+if (path[path.length-1]!=localStorage.userId) {
+    document.querySelector('.item2').style.backgroundColor='rgba(82, 114, 152, 1)';
+    document.getElementById('myHeros').addEventListener('click', ()=> {
+        if (!localStorage.userId) {
+            const message = document.getElementById('center');
+            message.style.display = 'flex';
+            document.getElementById('page-body').classList.add('body-opacity');
+            setTimeout(() => {
+                window.location.href = "/login"
+                setTimeout(() => {
+                    message.style.display = 'none';
+                    document.getElementById('page-body').classList.remove('body-opacity');
+        
+                }, 50);
+            }, 1500);
+        } else{
+            window.location.href = `/users/posts/${localStorage.userId}`;
+        }
+    })
+}
 
 if (!localStorage.userId) {
     const message = document.getElementById('center');

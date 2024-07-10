@@ -20,16 +20,16 @@ router = APIRouter(
 templates = Jinja2Templates(directory= "app/templates/")
 
 # @router.get("/",response_model=List[schemas.SendPost])
+@router.get("/")
 # @router.get("/")
-# # @router.get("/")
-# async def get_all( request: Request,db:session=Depends(get_db),limit:int =10000,skip:int = 0,search : Optional[str]=""):
-#     # heros = db.query(models.Post).filter(models.Post.alias.contains(search)).limit(limit).offset(skip).all()
-#     results = db.query(models.Post,func.count(models.Vote.post_id).label("likes")).filter(models.Post.alias.contains(search)).join(models.Vote,models.Vote.post_id == models.Post.id,isouter=True).group_by(models.Post.id).limit(limit).offset(skip).all()
-#     # data = [{"post":{**post.__dict__}, "likes": int(value)} for post, value in results]
-#     # return results
-#     return templates.TemplateResponse("home/index.html",{"request": request})
-#     # return templates.TemplateResponse("home/index.html",{"request": request,"hero_pack":results[::-1],"length":len(results)})
-#     # return results
+async def get_all( request: Request,db:session=Depends(get_db),limit:int =10000,skip:int = 0,search : Optional[str]=""):
+    # heros = db.query(models.Post).filter(models.Post.alias.contains(search)).limit(limit).offset(skip).all()
+    results = db.query(models.Post,func.count(models.Vote.post_id).label("likes")).filter(models.Post.alias.contains(search)).join(models.Vote,models.Vote.post_id == models.Post.id,isouter=True).group_by(models.Post.id).limit(limit).offset(skip).all()
+    # data = [{"post":{**post.__dict__}, "likes": int(value)} for post, value in results]
+    # return results
+    # return templates.TemplateResponse("home/index.html",{"request": request})
+    return templates.TemplateResponse("home/index.html",{"request": request,"hero_pack":results[::-1],"length":len(results)})
+    # return results
 
 @router.get("/api",response_model=List[schemas.PostOut])
 async def get_all( request: Request,current_user:int= Depends(oauth2.get_current_user),db:session=Depends(get_db),limit:int =10000,skip:int = 0,search : Optional[str]=""):
