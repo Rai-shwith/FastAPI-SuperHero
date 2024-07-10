@@ -72,12 +72,13 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
                 return response.json();
             }).then(data => {
                 localStorage.setItem('userId', data.id);
-            }).catch(error => console.error(error))
+                localStorage.setItem('userName', data.user_name);
+            
             // document.getElementById('wheel').style.display = 'none';
             // document.getElementById('wheel').style.animation = 'none';
             // document.getElementById('loading').style.display = 'none';
             const message = document.getElementById('center');
-            message.innerHTML = 'Successfully Logged in'
+            message.innerHTML = `Successfully Logged in as ${localStorage.userName}`
             message.style.color = 'green'
             message.style.display = 'flex';
             document.getElementById('page-body').classList.add('body-opacity');
@@ -93,7 +94,7 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
 
 
             }, 1500);
-
+        }).catch(error => console.error(error))
 
         }).catch(error => {
             console.error('Error while Logging in: ', error)
