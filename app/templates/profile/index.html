@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <div id="loading"><div id="wheel"></div></div>
     <div class="herotxt">Profile</div>
 
     <div onclick="localStorage.clear()" class="logoutbtn">
@@ -56,6 +57,18 @@
 
         </div>
     </nav>
+    <script>
+        window.addEventListener('beforeunload', () => {
+            document.getElementById('wheel').style.display = 'inline-block';
+            document.getElementById('wheel').style.animation = 'spin 1s cubic-bezier(1,0,0,1)  infinite alternate';
+            document.getElementById('loading').style.display = 'block';
+        })
+        window.addEventListener('pagehide', () => {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('wheel').style.display = 'none';
+            document.getElementById('wheel').style.animation = 'none';
+        })
+    </script>
     <script src="../../static/JS/simple/script.js"></script>
 </body>
 
