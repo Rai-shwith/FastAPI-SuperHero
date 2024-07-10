@@ -1,6 +1,6 @@
 document.body.style.backgroundColor="rgba(126, 166, 212, 0.78)";
-var likedList = []
-var unLikedList = []
+const likedList = []
+const unLikedList = []
 if (!localStorage.token) {
     var dummyToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5ODM4OTc0MTgzNjcxMzk4NDEsImV4cCI6MTcyMTE5NjA4Mn0.Q8si-ntjlU6QiMw0Iks0fGv6wTf0C6KUd9eL2Mn6DME"
     localStorage.setItem('token', dummyToken)
