@@ -74,9 +74,6 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
                 localStorage.setItem('userId', data.id);
                 localStorage.setItem('userName', data.user_name);
             
-            // document.getElementById('wheel').style.display = 'none';
-            // document.getElementById('wheel').style.animation = 'none';
-            // document.getElementById('loading').style.display = 'none';
             const message = document.getElementById('center');
             message.innerHTML = `Successfully Logged in as ${localStorage.userName}`
             message.style.color = 'green'

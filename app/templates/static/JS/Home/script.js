@@ -1,12 +1,5 @@
-
 let likedList = new Set()
 let unLikedList = new Set()
-
-
-
-
-
-
 document.getElementById('myHeros').addEventListener('click', ()=> {
     if (!localStorage.userId) {
         const message = document.getElementById('center');
