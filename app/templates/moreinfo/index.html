@@ -9,6 +9,8 @@
 </head>
 <body>
     <div id="loading"><div id="wheel"></div></div>
+    <div style="display: none;" id="center">You are not logged in</div>
+    <div id="page-body">
     <div class="main-box">
         <div class="main-txt">{{ hero_pack["Post"]["alias"]}}</div>
         <div class="hero-name">{{hero_pack["Post"]["name"]}}</div>
@@ -22,7 +24,7 @@
         <a href="javascript:history.back()">
             <div class="back-btn">Back</div>
         </a>
-        <a onclick="window.location.href = `/users/posts/${localStorage.userId}`;">
+        <a id="myHeros">
             <div class="my-hero-btn">My Heros</div>
         </a>
 
@@ -49,8 +51,25 @@
             <div class="back-btn">Back</div>
         </a>
     </div> -->
-    
+</div>
     <script>
+        document.getElementById('myHeros').addEventListener('click', ()=> {
+    if (!localStorage.userId) {
+        const message = document.getElementById('center');
+        message.style.display = 'flex';
+        document.getElementById('page-body').classList.add('body-opacity');
+        setTimeout(() => {
+            window.location.href = "/login"
+            setTimeout(() => {
+                message.style.display = 'none';
+                document.getElementById('page-body').classList.remove('body-opacity');
+    
+            }, 50);
+        }, 1500);
+    } else{
+        window.location.href = `/users/posts/${localStorage.userId}`;
+    }
+})
         window.addEventListener('beforeunload', () => {
             document.getElementById('wheel').style.display = 'inline-block';
             document.getElementById('wheel').style.animation = 'spin 1s cubic-bezier(1,0,0,1)  infinite alternate';
