@@ -1,8 +1,25 @@
 // document.body.style.backgroundColor="rgba(126, 166, 212, 0.78)";
-const likedList = []
-const unLikedList = []
+let likedList = new Set()
+let unLikedList = new Set()
 let path=window.location.href.split('/')
 if (path[path.length-1]!=localStorage.userId) {
+    // fetch(`/users/voted/${localStorage.userId}`,{
+    //     method: 'GET',
+    // }).then((response)=>{
+    //     if (!response.ok){
+    //         throw new Error(response.statusText)
+    //     }
+    //     return response.json()
+    // }).then(data=>{
+    //     const likedPostId=data;
+    //     document.querySelectorAll('.like img').forEach((img)=>{
+    //         if (likedPostId.includes(img.id)){
+    //             img.src = '../../static/images/filledheart.png';
+    //         }else{
+    //             img.src = '../../static/images/blankheart.png';
+    //         }
+    //     })
+    // })
     document.querySelector('.item2').style.backgroundColor='rgba(82, 114, 152, 1)';
     document.getElementById('myHeros').addEventListener('click', ()=> {
         if (!localStorage.userId) {
@@ -104,26 +121,26 @@ if (!localStorage.userId) {
 // }
 
 function toggleHeart(postId) {
-    const src = 'like-img' + postId
+    const src = postId
     const img = document.getElementById(src);
     if (!localStorage.token) {
-        console.error("You are not logged in")
+        throw new Error("You are not logged in")
     }
     else if (img.src.endsWith('blankheart.png')) {
-        if (unLikedList.includes(postId)) {
-            unLikedList.filter(item => item != postId)
+        if (unLikedList.has(postId)) {
+            unLikedList = new Set(Array.from(unLikedList).filter(item => item != postId))
         }
-        else { likedList.push(postId) }
+        else { likedList.add(postId) }
 
         let likeNum = document.getElementById(`likeCount${postId}`)
         likeNum.innerHTML = parseInt(likeNum.innerHTML) + 1
         img.src = '../../static/images/filledheart.png'; // Change to filled heart image
 
     } else {
-        if (likedList.includes(postId)) {
-            likedList.filter(item => item != postId)
+        if (likedList.has(postId)) {
+            likedList = new Set(Array.from(likedList).filter(item => item != postId))
         }
-        else { unLikedList.push(postId) }
+        else { unLikedList.add(postId) }
 
         let likeNum = document.getElementById(`likeCount${postId}`)
         likeNum.innerHTML = parseInt(likeNum.innerHTML) - 1
@@ -135,7 +152,7 @@ function toggleHeart(postId) {
 
 window.addEventListener('beforeunload', () => {
     setTimeout(() => {
-        unLikedList.forEach(element => {
+        Array.from(unLikedList).forEach(element => {
             data = {
                 "post_id": element,
                 "direction": 0
@@ -155,10 +172,11 @@ window.addEventListener('beforeunload', () => {
             }).catch(error => {
                 console.error(error) });
         })
+    },0);
     
-    }, 0);
-    setTimeout(() => {
-        likedList.forEach(element => {
+setTimeout(() => {
+    
+        Array.from(likedList).forEach(element => {
             data = {
                 "post_id": element,
                 "direction": 1
@@ -179,7 +197,6 @@ window.addEventListener('beforeunload', () => {
                 console.error(error) });
         }) 
     }, 0);
-    
     })
 
 document.getElementById('profile').addEventListener('click', ev => {

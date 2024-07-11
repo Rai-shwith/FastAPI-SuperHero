@@ -32,12 +32,12 @@
             
         </div>
         <div id="like-box" onclick="toggleHeart('{{hero["Post"]["id"]}}')">
-                <div id="like">
+                <div id="like" class="like">
                     {%if (hero["is_liked"])%}
-                    <img id="like-img{{hero["Post"]["id"]}}" style="position: absolute;" src="../../static\images\filledheart.png" alt=""
+                    <img id="{{hero["Post"]["id"]}}" style="position: absolute;" src="../../static\images\filledheart.png" alt=""
                         srcset="">
                         {%else%} 
-                        <img id="like-img{{hero["Post"]["id"]}}" style="position: absolute;" src="../../static\images\blankheart.png" alt=""
+                        <img id="{{hero["Post"]["id"]}}" style="position: absolute;" src="../../static\images\blankheart.png" alt=""
                             srcset="">
                             {% endif %}
                     <span id="likeCount{{hero["Post"]["id"]}}" style="position: absolute; z-index: 1;">{{hero["likes"]}}</span>
