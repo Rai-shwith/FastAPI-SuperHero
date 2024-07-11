@@ -98,8 +98,12 @@ def get_users_heros(request:Request,id:str,db :session = Depends(get_db)):
         user_id=id_list[1]
         if user_id!=id:
             provide_delete=False
+        if user_id == "undefined":
+            raise ValueError("User is Not logged In")
     except IndexError:
         user_id = id
+    except ValueError:
+        user_id = None
     user_heros = db.query(models.Post,func.count(models.Vote.post_id).label("likes")).filter(models.Post.owner_id == id).join(models.Vote,models.Vote.post_id == models.Post.id,isouter=True).group_by(models.Post.id).all()
     user_liked_heroes = db.query(models.Vote).filter(models.Vote.user_id==user_id).all()
     user_liked_heroes = [_.post_id  for  _ in user_liked_heroes ]

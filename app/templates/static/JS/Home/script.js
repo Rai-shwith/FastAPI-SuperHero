@@ -43,6 +43,8 @@ document.getElementById('profile').addEventListener('click', ev => {
         window.location.href = `/users/${localStorage.userId}`;
     }
 })
+
+if (localStorage.userId){
 fetch(`/users/voted/${localStorage.userId}`,{
     method: 'GET',
 }).then((response)=>{
@@ -58,6 +60,7 @@ fetch(`/users/voted/${localStorage.userId}`,{
         }
     })
 })
+}
 function toggleHeart(postId) {
     const src = postId
     const img = document.getElementById(src);
