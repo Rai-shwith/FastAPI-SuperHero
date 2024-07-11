@@ -16,20 +16,12 @@ router = APIRouter(
     tags=["Posts"]
 )
 
-# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 templates = Jinja2Templates(directory= "app/templates/")
 
-# @router.get("/",response_model=List[schemas.SendPost])
 @router.get("/")
-# @router.get("/")
 async def get_all( request: Request,db:session=Depends(get_db),limit:int =10000,skip:int = 0,search : Optional[str]=""):
-    # heros = db.query(models.Post).filter(models.Post.alias.contains(search)).limit(limit).offset(skip).all()
     results = db.query(models.Post,func.count(models.Vote.post_id).label("likes")).filter(models.Post.alias.contains(search)).join(models.Vote,models.Vote.post_id == models.Post.id,isouter=True).group_by(models.Post.id).limit(limit).offset(skip).all()
-    # data = [{"post":{**post.__dict__}, "likes": int(value)} for post, value in results]
-    # return results
-    # return templates.TemplateResponse("home/index.html",{"request": request})
     return templates.TemplateResponse("home/index.html",{"request": request,"hero_pack":results[::-1],"length":len(results)})
-    # return results
 
 @router.get("/api",response_model=List[schemas.PostOut])
 async def get_all( request: Request,current_user:int= Depends(oauth2.get_current_user),db:session=Depends(get_db),limit:int =10000,skip:int = 0,search : Optional[str]=""):
@@ -53,18 +45,13 @@ def post_hero(request:Request,post:schemas.CreatePost,db :session=Depends(get_db
     db.commit()
     db.refresh(new_hero)
     new_hero.id = str(new_hero.id)#this is because js cant handle large numbers
-    # return {"message": f"{post.alias} is added to the Team "}
-    # return templates.TemplateResponse("moreinfo/index.html",{"request": request,"hero_pack":{"Post":new_hero}})
     return new_hero
 
     
 
 @router.get("/{id}",response_model=schemas.PostOut)
-# def get_a_hero(request : Request ,id:int,db:session=Depends(get_db),current_user : int = Depends(oauth2.get_current_user)):
 def get_a_hero(request : Request ,id:int,db:session=Depends(get_db)):
-    # hero = db.query(models.Post).filter(models.Post.id == id).first()
     hero = db.query(models.Post,func.count(models.Vote.user_id).label("likes")).filter(models.Post.id == id).join(models.Vote,models.Vote.post_id == models.Post.id,isouter = True).group_by(models.Post.id).first()
-    # hero = db.query(models.Post,func.count(models.Vote.post_id).label("likes")).filter(models.Post.alias.contains(search)).join(models.Vote,models.Vote.post_id == models.Post.id,isouter=True).group_by(models.Post.id).limit(limit).offset(skip).all()
 
     if hero:
         return templates.TemplateResponse("moreinfo/index.html",{"request": request,"hero_pack":hero})
@@ -75,8 +62,6 @@ def get_a_hero(request : Request ,id:int,db:session=Depends(get_db)):
 
 @router.get('/get-name/{hero}',response_model=schemas.SendName)
 def get_name_from_hero(hero:str, db : session = Depends(get_db)):
-    # cursor.execute("SELECT name from heros   WHERE  alias = %s",(hero,))
-    # name = cursor.fetchone()
     name = db.query(models.Post).filter(models.Post.alias == hero).first()
     if name is None :
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"No Hero named {hero} in your team")

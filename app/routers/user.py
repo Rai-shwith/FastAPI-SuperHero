@@ -16,29 +16,16 @@ router = APIRouter(
 )
 
 templates = Jinja2Templates(directory="app/templates/")
-# router.mount("/signup",StaticFiles(directory="app\\templates\signup",html=True),name="signup")
 
 @router.get("/", response_model =List[schemas.RespondToEntryOfUser])
 def  give_all_users(request: Request,db:session=Depends(get_db)):
     users = db.query(models.Users).all()
     return templates.TemplateResponse('getallusers/index.html',{"request":request,"users":users[::-1]})
-    # return users
 
 # This block is used to create a new user in table users
 @router.post("/api/token",status_code=status.HTTP_201_CREATED,response_model=schemas.RespondToEntryOfUser)
 def create_user(user:schemas.UserInfo,db:session= Depends(get_db)):
     user.password = utils.hash(user.password)
-    # try:
-    #     new_user = models.Users(**user.model_dump())
-    #     db.add(new_user)
-    #     db.commit()
-    # except Exception as e:
-    #     # Check if the error message contains "already exists"
-    #     if '(psycopg2.errors.UniqueViolation)' in str(e):
-    #         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Email {user.email} already exists")
-    #     else:
-    #         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Database error occurred")
-        
     try:
         new_user = models.Users(**user.model_dump())
         db.add(new_user)
@@ -46,16 +33,12 @@ def create_user(user:schemas.UserInfo,db:session= Depends(get_db)):
     except (IntegrityError, UniqueViolation) as e:
         # Check if the error message contains "already exists" for email or phone number
         if 'duplicate key value violates unique constraint' in str(e).lower():
-            # if "uq_phone_number" in str(e):
-            #     raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Phone number {user.phone_number} already exists")
             if 'users_email_key' in str(e).lower():
                 raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Email {user.email} already exists")
             else:
                 raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Unique constraint violation")
         else:
             raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Database error occurred")
-    # except Exception as e:
-    #     print("eee",e)
         
     db.refresh(new_user)
     return new_user
@@ -109,7 +92,6 @@ def get_users_heros(request:Request,id:str,db :session = Depends(get_db)):
     user_liked_heroes = [_.post_id  for  _ in user_liked_heroes ]
     user_heros = add_is_liked(user_heros,user_liked_heroes)
     return templates.TemplateResponse("getuserheros/index.html",{"request":request,"hero_pack": user_heros[::-1],"heros_length":len(user_heros),"provide_delete":provide_delete})
-    # return user_heros[::-1]
 
 # This code will return the array of posts id that a given user has liked
 @router.get("/voted/{id}")

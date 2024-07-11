@@ -23,8 +23,6 @@ class SendPost(BaseModel):
     alias : str
     owner_id : Union[str,int]
     owner : RespondToEntryOfUser
-    # current_user : EmailStr
-    # joined_on : datetime
     class Config:
         from_attributes = True
 
@@ -42,8 +40,6 @@ class SendName(BaseModel):
     class Config:
         from_attributes = True
 
-# class SendAllPost(BaseModel):
-#     heros : list[SendPost]
 
 # This class is to validate user credentials while receiving
 class UserInfo(BaseModel):

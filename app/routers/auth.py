@@ -17,8 +17,6 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 @router.post("/api/token",response_model=schemas.Token)
 def login(user_credentials : OAuth2PasswordRequestForm = Depends(),db: Session = Depends(get_db)):
-# def login(user_credentials : schemas.UserLogin,db: Session = Depends(get_db)):
-# in oauth2password  there are only 2 fields username and pass word so instesd  of .email now i use .username
     user = db.query(models.Users).filter(models.Users.email == user_credentials.username).first()
     if user is None:
         raise HTTPException(status_code = status.HTTP_403_FORBIDDEN,detail = f"Invalid Credentials ")
