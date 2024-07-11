@@ -1,6 +1,6 @@
 
-const likedList = []
-const unLikedList = []
+let likedList = new Set()
+let unLikedList = new Set()
 
 
 
@@ -66,20 +66,20 @@ function toggleHeart(postId) {
         console.error("You are not logged in")
     }
     else if (img.src.endsWith('blankheart.png')) {
-        if (unLikedList.includes(postId)) {
-            unLikedList.filter(item => item != postId)
+        if (unLikedList.has(postId)) {
+            unLikedList= new Set(Array.from(unLikedList).filter(item => item != postId))
         }
-        else { likedList.push(postId) }
+        else { likedList.add(postId) }
 
         likeNum = document.getElementById(`likeCount${postId}`)
         likeNum.innerHTML = parseInt(likeNum.innerHTML) + 1
         img.src = '../static/images/filledheart.png'; // Change to filled heart image
 
     } else {
-        if (likedList.includes(postId)) {
-            likedList.filter(item => item != postId)
+        if (likedList.has(postId)) {
+            likedList = new Set(Array.from(likedList).filter(item => item != postId))
         }
-        else { unLikedList.push(postId) }
+        else { unLikedList.add(postId) }
 
         likeNum = document.getElementById(`likeCount${postId}`)
         likeNum.innerHTML = parseInt(likeNum.innerHTML) - 1
@@ -91,7 +91,7 @@ function toggleHeart(postId) {
 
 window.addEventListener('beforeunload', () => {
 setTimeout(() => {
-    unLikedList.forEach(element => {
+    Array.from(unLikedList).forEach(element => {
         data = {
             "post_id": element,
             "direction": 0
@@ -114,7 +114,7 @@ setTimeout(() => {
 
 }, 0);
 setTimeout(() => {
-    likedList.forEach(element => {
+    Array.from(likedList).forEach(element => {
         data = {
             "post_id": element,
             "direction": 1
