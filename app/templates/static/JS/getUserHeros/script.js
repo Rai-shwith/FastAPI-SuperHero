@@ -3,23 +3,7 @@ let likedList = new Set()
 let unLikedList = new Set()
 let path=window.location.href.split('/')
 if (path[path.length-1]!=localStorage.userId) {
-    // fetch(`/users/voted/${localStorage.userId}`,{
-    //     method: 'GET',
-    // }).then((response)=>{
-    //     if (!response.ok){
-    //         throw new Error(response.statusText)
-    //     }
-    //     return response.json()
-    // }).then(data=>{
-    //     const likedPostId=data;
-    //     document.querySelectorAll('.like img').forEach((img)=>{
-    //         if (likedPostId.includes(img.id)){
-    //             img.src = '../../static/images/filledheart.png';
-    //         }else{
-    //             img.src = '../../static/images/blankheart.png';
-    //         }
-    //     })
-    // })
+
     document.querySelector('.item2').style.backgroundColor='rgba(82, 114, 152, 1)';
     document.getElementById('myHeros').addEventListener('click', ()=> {
         if (!localStorage.userId) {
@@ -229,7 +213,7 @@ function deleteHero(heroId) {
             }).then(response => {
                 if (response.status == 204) {
                     console.log("Heo Deleted")
-                    window.location.href = "/users-heros"
+                    window.location.href = `/users/posts/${localStorage.userId}`;
                     }})
         }
     }, 300);

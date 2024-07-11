@@ -29,7 +29,9 @@
             <a href="/posts/{{hero["Post"]["id"]}}">
                 <div class="more-info">More info</div>
             </a>
-            
+            {%if (provide_delete)%}
+            <div class="delete-btn"  onclick="deleteHero('{{hero["Post"]["id"]}}')"><img draggable="false" src="../../static/images/material-symbols_delete.png" alt="delete icon" srcset=""></div>
+            {%endif%}
         </div>
         <div id="like-box" onclick="toggleHeart('{{hero["Post"]["id"]}}')">
                 <div id="like" class="like">
