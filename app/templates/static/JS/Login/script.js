@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.token && localStorage.token != 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5ODM4OTc0MTgzNjcxMzk4NDEsImV4cCI6MTcyMTE5NjA4Mn0.Q8si-ntjlU6QiMw0Iks0fGv6wTf0C6KUd9eL2Mn6DME') {
         const message = document.getElementById('center');
-        message.innerHTML = 'Successfully Logged in'
+        message.innerHTML = `Successfully Logged in as ${localStorage.userName}`
         message.style.color = 'green'
         message.style.display = 'block';
         document.getElementById('page-body').classList.add('body-opacity');
