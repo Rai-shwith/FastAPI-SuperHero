@@ -27,7 +27,7 @@
                 <div>{{user["created_at"].strftime("%b %d %Y")}}</div>
             </div>
             <div class="delete-btn"  onclick="deleteAccount()"><img draggable="false" src="../../static/images/material-symbols_delete.png" alt="delete icon" srcset=""></div>
-            <div class="more-info"><a style="width: 100%;height: 100%;" href="/users-heros">View
+            <div class="more-info"><a style="width: 100%;height: 100%;" onclick="window.location.href = `/users/posts/${localStorage.userId}`">View
                     Heros</a></div>
 
 
