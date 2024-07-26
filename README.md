@@ -46,37 +46,37 @@ Simply use the provided weblink to access the application. For now, it is turned
 Below are screenshots of the application on both desktop and mobile views:
 
 - Welcome Page:🎉
-![Mobile welcome page](./screenshots/Mobile/welcome.PNG)
 ![Desktop welcome page](./screenshots/Desktop/welcome.PNG)
+![Mobile welcome page](./screenshots/Mobile/welcome.PNG)
 
 - Login Page:🔒
-![Mobile login page](./screenshots/Mobile/login.PNG)
 ![Desktop login page](./screenshots/Desktop/login.PNG)
+![Mobile login page](./screenshots/Mobile/login.PNG)
 
 
 - Signup Page:📝
-![Mobile signup page](./screenshots/Mobile/signup.PNG)
 ![Desktop signup page](./screenshots/Desktop/signup.PNG)
+![Mobile signup page](./screenshots/Mobile/signup.PNG)
 
 
 - View All Heroes:👥
-![Mobile allHeros Page](./screenshots/Mobile/allHeros.PNG)
 ![Desktop allHeros page](./screenshots/Desktop/allHeros.PNG)
+![Mobile allHeros Page](./screenshots/Mobile/allHeros.PNG)
 
 
 - Add Hero:🦸‍♂️
-![Mobile addHero Page](./screenshots/Mobile/addHero.PNG)
 ![Desktop addHero page](./screenshots/Desktop/addHero.PNG)
+![Mobile addHero Page](./screenshots/Mobile/addHero.PNG)
 
 
 - Hero Details:📊
-![Mobile moreINfo Page](./screenshots/Mobile/moreINfo.PNG)
 ![Desktop moreINfo page](./screenshots/Desktop/moreINfo.PNG)
+![Mobile moreINfo Page](./screenshots/Mobile/moreINfo.PNG)
 
 
 - User Profile:👤
-![Mobile profile Page](./screenshots/Mobile/profile.PNG)
 ![Desktop profile page](./screenshots/Desktop/profile.PNG)
+![Mobile profile Page](./screenshots/Mobile/profile.PNG)
 
 
 7. **Technologies Used 💻**
