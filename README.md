@@ -1,4 +1,5 @@
-# 🦸‍♂️ FastAPI-SuperHero 🦸‍♂️
+# 🦸‍♂️ [FastAPI-SuperHero](https://fastapi-superhero.onrender.com) 🦸‍♂️
+
 ___
 
 
@@ -10,7 +11,7 @@ FastAPI-SuperHero is a web application where users can:
 - 👤 View and manage their profile and delete their heroes or profile.
 
 ## 📦 Installation Instructions
-> Note: The application is not hosted publicly due to cost issues, but it can be made available upon request.
+> Note: The application is hosted publicly on https://fastapi-superhero.onrender.com
 
 ## 🚀 To run the project locally:
 
